@@ -1,1 +1,1 @@
-# SE2-PignatiSarroccoVacca
+# Software Engineering 2 R&DD Project
