@@ -38,16 +38,22 @@ Moreover, the eMall service has a smart system that suggets to the user the opti
 
 \subsection{Scope}
 \subsubsection{Phenomena}
+According to the paper "The World and the Machine" by M.Jackson and P.Zave, 
+we can identify the application domains. 
+The following table describes the world, shared and the machine phenomena, 
+including the reference to which part controls the phenomena.
 \begin{table}[h]
         \centering
         \begin{tabular}{|c|c|c|}
         \hline
-        Phenomenon                                        & Controller & Shared \\ \hline
+        \textbf{Phenomenon}                                        & \textbf{Controller} & \textbf{Shared} \\ \hline
         Users charge their vehicles at charging stations  & W          & N      \\ \hline
         User books a charge at a charging station         & W          & Y      \\ \hline
         WP3                                               & M          & Y      \\ \hline
         User registration                                 & M          & Y      \\ \hline
         User login                                        & W          & Y      \\ \hline
+        User views a charging station's information       & W          & Y      \\ \hline
+        User selects a station's eMSP for the service     & W          & Y      \\ \hline
         User pays for the charge                          & W          & N      \\ \hline
         User recives advice on where to charge            & W          & Y      \\ \hline
         User is notified when the charge has been completed   & W          & Y      \\ \hline
@@ -59,6 +65,58 @@ Moreover, the eMall service has a smart system that suggets to the user the opti
 \end{table}
 
 \subsection{Definitions, Acronyms, Abbrevations}
+\subsubsection{Definitions}
+\begin{itemize}
+        \item \textbf{Users:} The people whom this service is directed. 
+        They can belong to any age and gender. 
+        Their goal is to efficiently charge their electric vehicle.
+        \item \textbf{Charging stations:} Places that offer the service of electric vehicle recharging.
+        \item \textbf{e-Mobility Service Providers:} The companies that offer the service of charging at different stations.
+        \item \textbf{Charging Point Operators:} The companies that manage charging stations (one or more).
+        \item \textbf{Distribution System Operators:} The charging station's energy providers.
+        \item \textbf{Charging Point Managment System:} The single CPO's system to manage all the IT infrastructure.
+        \item \textbf{Notification:} It's an alert that a certain event occurred. 
+        This alert can be a "Push Notification" on the smartphone, an SMS, an email and so on.
+        \item \textbf{Push Notification:} It's an automated message sent by an application to a user when the application is not running.
+\end{itemize}
+\subsubsection{Acronyms}
+\begin{itemize}
+        \item \textbf{eMall:} e-Mobility for all.
+        \item \textbf{eMSP:} e-Mobility Service Provider.
+        \item \textbf{CPO:} Charging Point Operator.
+        \item \textbf{DSO:} Distribution System Operator.
+        \item \textbf{CPMS:} Charging Point Managment System.
+        \item \textbf{API:} Application Programming Interface.
+        \item \textbf{UML:} Unified Modeling Language.
+\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+        \item \textbf{ID:} Identifier. It's a generally unique sequence of numbers or letters in order to unambiguously identify an entity.
+        \item \textbf{Gn:} Goal number $n$
+        \item \textbf{Dn:} Domain assumption number $n$
+        \item \textbf{Rn:} Requirement number $n$
+\end{itemize}
 \subsection{Revision History}
 \subsection{Reference Documents}
+\begin{itemize}
+        \item Specification document: "R\&DD Assignment A.Y. 2022-2023"
+        \item Alloy official documentation: \underline{\url{https://alloytools.org/documentation.html}}
+        \item Paper: "Jackson and Zave: the world and the machine"
+        \item UML official specification \underline{\url{http://www.omg.org/spec/UML/}}
+        \item BPMN official specification \underline{\url{http://www.omg.org/spec//BPMN/index.html}}
+\end{itemize}
 \subsection{Document Structure}
+\begin{itemize}
+        \item \textbf{Section 1: Introduction} This section offers a brief description of the problem and required functionalities.
+        It also contains the list of definitions, acronyms and abbreviations that will be found in this document.
+        Finally, there is the version history of the document, containing the revisions list and their content, and document structure, 
+        which describes the main purposes of the sections of this document.
+        \item \textbf{Section 2: Overall Description} This section shows the possible scenarios of interaction by the user with the system. It also offers a summarized description about the overall organization of the system, the hardware and software constraints and the interfaces needed to get it to work.
+        It also contains a description of all the features offered by the application, and of the actors who use it.
+        
+        \item \textbf{Section 3: Specific Requirements} This section contains several visual mockups in order to explain the interfaces listed in Section 2. 
+        It also contains a description of functional requirements through use cases and diagrams.
+
+        \item \textbf{Section 4: Formal Analysis through Alloy} This section contains the description of the analysis' objective and the formal analysis with the use of Alloy.
+        \item \textbf{Section 5: Effort Spent} This section presents the total effort spent by the project's members.
+\end{itemize}
