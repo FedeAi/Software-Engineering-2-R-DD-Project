@@ -10,21 +10,21 @@ The experience will be enhanced because many aspects of electric vehicle chargin
 Users will have the possibility to see which charging stations are available nearby and to also know the charging cost and if they have special offers.
 They will also have the opportunity to book a charge at a station at a certain timeframe in advance and to start the charging process.
 They will be notified when the process has finished and the car is fully charged, and they will be able to pay from the application.
-Moreover, the eMall service has a smart system that suggets to the user the optimal charging solution, based on their schedule, the charging cost and the current state of charge.
+Moreover, the eMall service has a smart system that suggests to the user the optimal charging solution, based on their schedule, the charging cost and the current state of charge.
 \subsubsection{Goals}
 \begin{enumerate}[label=$\bullet$ \textbf{G\arabic*:}]
         \item \textbf{Allow users to obtain information about nearby charging stations}
         \\
         The user can view information about any nearby charging station, 
         such as charging cost and about special offers, availability of every type of charging socket, 
-         ******* and if a certain type of socket are all occupied,
+        and if a certain type of socket is occupied at the time,
          the estimated time for the first to be free.
         \item \textbf{Allow users to book a charge for a certain timeframe}
         \\
-        The user can select any available charging station and book the charging for a certain timeslot. 
+        The user can select any available charging station and book the charging for a certain timeslot, if available. 
         \item \textbf{Allow users to start the charge}
         \\
-        The user can remotely start the charge once the electric car has been connected to the station's socket. ********The booking of the station is not mandatory: if a station is free, the user is free to drive there and start the charge from the application.
+        The user can remotely start the charge once the electric car has been connected to the station's socket.
         \item \textbf{Allow the users to know when the charging has finished}
         \\
         The user will be notified by the application when the charging of his vehicle has been completed.
@@ -47,21 +47,19 @@ including the reference to which part controls the phenomena.
         \begin{tabular}{|c|c|c|}
         \hline
         \textbf{Phenomenon}                                        & \textbf{Controller} & \textbf{Shared} \\ \hline
-        Users charge their vehicles at charging stations  & W          & N      \\ \hline
+        User charges his vehicle at charging stations  & W          & N      \\ \hline
         User books a charge at a charging station         & W          & Y      \\ \hline
-        WP3                                               & M          & Y      \\ \hline
+        User connects the vehicle at the charging station              & W          & N      \\ \hline
+        User receives QR code for his booking      & M          & Y      \\ \hline
+        User authenticates with a QR code at the station at the selected timeslot      & M          & Y      \\ \hline
+        User remotely starts the charge                   & W          & Y      \\ \hline       
         User registration                                 & M          & Y      \\ \hline
         User login                                        & W          & Y      \\ \hline
         User views a charging station's information       & W          & Y      \\ \hline
-        User selects a station's eMSP for the service     & W          & Y      \\ \hline
         User pays for the charge                          & W          & N      \\ \hline
-        User recives advice on where to charge            & W          & Y      \\ \hline
+        User receives advice on the optimal place to charge            & W          & Y      \\ \hline
         User is notified when the charge has been completed   & W          & Y      \\ \hline
-        System notifies the user                          & M          & Y      \\ \hline
-%        System determines the optimal station to charge   & M          & N      \\ \hline
-        WP6                                               & W          & Y      \\ \hline
-        WP6                                               & W          & Y      \\ \hline
-        \end{tabular}
+       \end{tabular}
 \end{table}
 
 \subsection{Definitions, Acronyms, Abbrevations}
@@ -107,16 +105,16 @@ including the reference to which part controls the phenomena.
 \end{itemize}
 \subsection{Document Structure}
 \begin{itemize}
-        \item \textbf{Section 1: Introduction} This section offers a brief description of the problem and required functionalities.
+        \item \textbf{Section 1: Introduction} \\This section offers a brief description of the problem and required functionalities.
         It also contains the list of definitions, acronyms and abbreviations that will be found in this document.
         Finally, there is the version history of the document, containing the revisions list and their content, and document structure, 
         which describes the main purposes of the sections of this document.
-        \item \textbf{Section 2: Overall Description} This section shows the possible scenarios of interaction by the user with the system. It also offers a summarized description about the overall organization of the system, the hardware and software constraints and the interfaces needed to get it to work.
+        \item \textbf{Section 2: Overall Description} \\This section shows the possible scenarios of interaction by the user with the system. It also offers a summarized description about the overall organization of the system, the hardware and software constraints and the interfaces needed to get it to work.
         It also contains a description of all the features offered by the application, and of the actors who use it.
         
-        \item \textbf{Section 3: Specific Requirements} This section contains several visual mockups in order to explain the interfaces listed in Section 2. 
+        \item \textbf{Section 3: Specific Requirements} \\This section contains several visual mockups in order to explain the interfaces listed in Section 2. 
         It also contains a description of functional requirements through use cases and diagrams.
 
-        \item \textbf{Section 4: Formal Analysis through Alloy} This section contains the description of the analysis' objective and the formal analysis with the use of Alloy.
-        \item \textbf{Section 5: Effort Spent} This section presents the total effort spent by the project's members.
+        \item \textbf{Section 4: Formal Analysis through Alloy} \\This section contains the description of the analysis' objective and the formal analysis with the use of Alloy.
+        \item \textbf{Section 5: Effort Spent} \\This section presents the total effort spent by the project's members.
 \end{itemize}
