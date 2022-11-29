@@ -32,7 +32,7 @@
 \end{enumerate}
 \subsubsection{Class Diagram}
 
-\subsubsection{State Diagrams}
+%\subsubsection{State Diagrams}
 \subsection{Product Functions}
 In this section the main functionalities of eMall are presented and described.
 \subsubsection{Sign up}
@@ -121,4 +121,40 @@ The user will than be notified at the computed time with a push notification. Th
 \end{figure}
 %
 \subsection{User Characteristics}
+The following three actors are considered in the e-Mall system.
+\subsubsection{Unregistered User}
+It's a person that doesn't have a registered account in the e-Mall application. 
+In this case, he can register an account to use the platform.
+\subsubsection{Registered User}
+It's a person that has a registered account in the e-Mall application. 
+He is able to use the e-Mall service and book a charge for his electric vehicle through the service.
+He is also able to unlock a charging socket for his reservation and to pay for the service through the platform.
+\subsubsection{e-Mobility Service Provider}
+It's a company that offers the vehicle charging service. It offers all its services though the e-Mall platform.
+eMSPs rely on multiple Charging Point Operators for actual charging process.
+\subsubsection{Charging Point Operator}
+It's the charging station owner and manager. This actor is responsible for the supply of the charging service offered by eMSPs. 
+Every reservation made on the e-Mall platform is fulfilled by CPOs.
+\subsubsection{Distribution System Operator}
+This actor is represented by the companies that supply energy to CPOs.
 \subsection{Assumptions, Dependencies and Constraints}
+\subsubsection{Assumptions}
+\begin{enumerate}[label=\textbf{D\arabic*}:]
+    \item Each user who wants to use the online service is needed to have a device connected to Internet (such as PC, Mac, smartphone, etc).
+    \item The user's mobile device fully supports the push notification technology.
+    \item The user's schedule and location is accessible by the platform.
+    \item The charging station checks the charging sockets, making sure that nobody can occupy a reserved socket apart from the booker.
+    \item The data automatically obtained by the system in order to send suggestions to the user is accurate and truthful.
+    \item Every CPMS system has the same communication methods. (Uniform APIs)
+    \item A generic CPMS system has to offer the following functions:
+        \begin{itemize}
+            \item Expose the information about the status and data of every charging station socket. (e.g. availability, type of socket, cost, time for the first socket to be free)
+            \item Start a charge on a specific socket.
+            \item Monitor the charge on a specific socket.
+            \item Infer at what time the charging process will be finished.
+        \end{itemize}
+    \item A fully functioning payment system is present and returns if a transaction has been successful or not.
+    \item ?? come fa la stazione di ricarica a capire che è occupata?
+    \item Every station has at least one charging socket.**
+    \item Every eMSP must interact with at least one CPO.**
+\end{enumerate}
