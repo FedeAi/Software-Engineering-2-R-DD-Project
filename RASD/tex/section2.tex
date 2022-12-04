@@ -2,33 +2,47 @@
 \subsection{Product Perspective}
 \subsubsection{Scenarios}
 \begin{enumerate}
-    \item \textbf{User wants to start using the eMall service}\\
-    The user Matteo decides that he wants to use the eMall service to 
+    \item \textbf{Customer wants to start using the eMall service}\\
+    The customer Matteo decides that he wants to use the eMall service to 
     take advantage of the efficiency it offers. 
     He launches the service and selects the option to sign up. 
     Matteo then inputs all the relevant information and he is granted access to the service.
-    \item \textbf{User books the recharge for his car}\\
-    After a long drive, the user Matteo noticies that the level of his battery is low. 
+    \item \textbf{Customer books the recharge for his car}\\
+    After a long drive, the customer Matteo noticies that the level of his battery is low. 
     He stops, takes his phone and launches the eMall service, logs in, and then he is presented with all the nearby stations.
     He then selects a specific timeslot for charging and he is presented with all the available nearby stations.
     He selects a station, views all the station's information and then chooses a station according to his preferences and then finalizes the booking.
-    The user then receives the socket's identification.
-    \item \textbf{User starts the charge}\\
-    The user Matteo drives to a station that he has a charge booked with, he then unlocks the booked socket from the service, he then connects his electric 
+    The customer then receives the socket's identification.
+    \item \textbf{Customer starts the charge}\\
+    The customer Matteo drives to a station that he has a charge booked with, he then unlocks the booked socket from the service, he then connects his electric 
     vehicle to the socket and, after he has left the vehicle, he launches the eMall service and 
     he is presented with the option to start the vehicle's charge. He selects this option and the station initiates charging on the booked socket. eMall than shows the user the estimated time for the full charge of the vehicle. 
-    \item \textbf{User is notified of a finished charge}\\
-    After the user Matteo has started to charging process at the station,
+    \item \textbf{Customer is notified of a finished charge}\\
+    After the customer Matteo has started to charging process at the station,
      he goes to a nearby cafeteria to have a cup of coffee. When the car has fully charge, the eMall service notifies him on his phone with a push notification.
-    \item \textbf{User pays for the service}\\
-    The user Matteo, after he has used the eMall service for a successful charge, provided that he has not paid for the service yet,
+    \item \textbf{Customer pays for the service}\\
+    The customer Matteo, after he has used the eMall service for a successful charge, provided that he has not paid for the service yet,
     launches the app and he is presented with the option to pay for the service, 
     he selects this option and then enters his credit card information.
     The service that processes his payment, and if it is successful he is presented with a success message.
-    \item \textbf{User is reminded to charge his electric vehicle}\\
-    While the user Matteo is driving, the eMall service monitors the car's battery level, the user's location and his schedule. 
-    When the service finds an optimal place to charge, related to schedule, location and state of charge it notifies the user with a push notification.
+    \item \textbf{Customer is reminded to charge his electric vehicle}\\
+    While the customer Matteo is driving, the eMall service monitors the car's battery level, the customer's location and his schedule. 
+    When the service finds an optimal place to charge, related to schedule, location and state of charge it notifies the customer with a push notification.
     Matteo then stops, launches the eMall service and then he is presented with the optimal station to charge, based on his location, the best timeslot with respect to his schedule and the stations' prices. He then books the charge.
+    
+    \item \textbf{CPO chooses from which DSO acquire energy}\\
+    The CPO Evox wants to modify the DSO energy source of a charging station. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard is able to selects his first station and then select the DSO MaDistribution from which to acquire energy.
+    \item \textbf{CPO chooses the cost of a charging}\\
+    The CPO Evox decides to modify the cost of a charging type in a specific station. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard selects the first station and then the charging type "fast", he then set the charging price to 10.7€/kWh.    
+    \item \textbf{CPO select automatic cost calculation of a charging}\\
+    The CPO Evox wants to set the automatic vehicle charging cost calculation. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard selects the first station and then the charging type "slow", he then set the charging price to automatic.      
+    \item \textbf{CPO select the battery policy discharge}\\
+    The CPO Evox wants to change the battery usage policy, he wants to take half of the energy from the batteries and the other half from the DSO. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard select the second charging station and then set battery policy to discharge and the discharge factor to 50\%.
+    \item \textbf{CPO select the battery policy disabled}\\
+    The CPO Evox wants to disable the usage of batteries, neither to charge them neither to use them to charge the vehicles. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard selects the third charging station, and then set the battery policy to disabled.
+    \item \textbf{CPO decides to make a special offer}\\
+    The CPO Evox to promote his service decides to make a special 10\% discount on the price of fast charging in his second station. The CPO's employee Mario launches the eMall service, logs in, and then using the dashboard selects the station and the charging type. He set the offer percentage to 10\%
+
 \end{enumerate}
 \subsubsection{Class Diagram}
 
@@ -119,42 +133,55 @@ The user will than be notified at the computed time with a push notification. Th
         \caption{BPMN diagram send suggestions method}
     \end{center}
 \end{figure}
+\subsubsection{Select the charging station's energy provider}
+This functionality allows the \textbf{CPOs}(\ref{CPO}) to manually adjust the energy provider. An energy provider can be select automatically or a CPO can manually select a specific \textbf{DSO}\ref{DSO}) for the supply of energy. The first step for the CPO is to log in in the platform and select a charging station. Then, the CPO can select an energy provider option for the station.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/fun-en-prov.png}
+        \caption{BPMN diagram select energy provider method}
+    \end{center}
+\end{figure}
+\subsubsection{Select a battery policy for a charging station}
+This functionality allows the \textbf{CPOs}(\ref{CPO}) to manualy select a battery policy for a charging station. A battery policy can be automatically select, or a charge, discharge and disable policy can be selected. The first step for the CPO is to log in in the platform and select a charging station. Then, the CPO can select a battery policy. If the discharge policy is selected, a CPO can also select a discharging factor, that will determine how much energy from the batteries will be mixed with the energy from the \textbf{DSOs}\ref{DSO}.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/fun-bat-pol.png}
+        \caption{BPMN diagram select battery policy method}
+    \end{center}
+\end{figure}
+\subsubsection{Select the charging station's charging cost}
+This functionality allows the \textbf{CPOs}(\ref{CPO}) to manually adjust the charging price at a station. The first step for the CPO is to log in in the platform and select a charging station. The second step is to select a specific charging type, such as slow, fast and rapid. Finally, the CPO can select a charging cost. Also, an option is present to apply a special offer (in percentage) on the current charging cost.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/fun-char-cost.png}
+        \caption{BPMN diagram send suggestions method}
+    \end{center}
+\end{figure}
 %
 \subsection{User Characteristics}
 The following three actors are considered in the e-Mall system.
-\subsubsection{Unregistered User}
+\subsubsection{Unregistered Customer}
 It's a person that doesn't have a registered account in the e-Mall application. 
 In this case, he can register an account to use the platform.
-\subsubsection{Registered User}
+\subsubsection{Registered Customer}
 It's a person that has a registered account in the e-Mall application. 
 He is able to use the e-Mall service and book a charge for his electric vehicle through the service.
 He is also able to unlock a charging socket for his reservation and to pay for the service through the platform.
-\subsubsection{e-Mobility Service Provider}
-It's a company that offers the vehicle charging service. It offers all its services though the e-Mall platform.
-eMSPs rely on multiple Charging Point Operators for actual charging process.
 \subsubsection{Charging Point Operator}
-It's the charging station owner and manager. This actor is responsible for the supply of the charging service offered by eMSPs. 
+It's the charging station owner and manager. This actor is responsible for the supply of the charging service offered by eMSP. 
 Every reservation made on the e-Mall platform is fulfilled by CPOs.
-\subsubsection{Distribution System Operator}
-This actor is represented by the companies that supply energy to CPOs.
 \subsection{Assumptions, Dependencies and Constraints}
 \subsubsection{Assumptions}
 \begin{enumerate}[label=\textbf{D\arabic*}:]
     \item Each user who wants to use the online service is needed to have a device connected to Internet (such as PC, Mac, smartphone, etc).
-    \item The user's mobile device fully supports the push notification technology.
-    \item The user's schedule and location is accessible by the platform.
+    \item The customer's mobile device fully supports the push notification technology.
+    \item The customer's schedule and location is accessible by the platform.
     \item The charging station checks the charging sockets, making sure that nobody can occupy a reserved socket apart from the booker.
     \item The data automatically obtained by the system in order to send suggestions to the user is accurate and truthful.
     \item Every CPMS system has the same communication methods. (Uniform APIs)
-    \item A generic CPMS system has to offer the following functions:
-        \begin{itemize}
-            \item Expose the information about the status and data of every charging station socket. (e.g. availability, type of socket, cost, time for the first socket to be free)
-            \item Start a charge on a specific socket.
-            \item Monitor the charge on a specific socket.
-            \item Infer at what time the charging process will be finished.
-        \end{itemize}
     \item A fully functioning payment system is present and returns if a transaction has been successful or not.
     \item ?? come fa la stazione di ricarica a capire che è occupata?
     \item Every station has at least one charging socket.**
     \item Every eMSP must interact with at least one CPO.**
+    \item Every CPO is supplied with login credentials when the system is installed.
 \end{enumerate}

@@ -1,11 +1,11 @@
 \section{Introduction}
 eMall (e-Mobility for All) is an easy-to-use application which intent is to help the user to recharge their electric vehicle in order to reduce our carbon footprint.
-Users need an application whose main intent is to plan the charging process of the electric vehicle, reducing the interference and constraints on our daily schedule.
+Users need an application whose main intent is to plan the charging process of an electric vehicle, thus reducing the interference and constraints on our daily schedule.
 Charging Point Operators need an application to manage their charging stations. 
 \subsection{Purpose}
 
-The aim of the product is to simplify the process of electric vehicle charging, improving the customer experience of the customers. Moreover the Charging Point Operators processes will be facilitated.
-The experience will be enhanced because many aspects of electric vehicle charging will be integrated and they will be located within a single service.
+The aim of the product is to simplify the process of electric vehicle charging, improving the customers' experience. Moreover the Charging Point Operators processes will be facilitated.
+The experience will be enhanced because many aspects of the electric vehicle charging will be integrated and they will be located within a single service.
 \\\\
 The application should provide two types of accesses for Customers (people who need to charge their vehicles) and Charging Point Operators.
 \\\\
@@ -13,12 +13,12 @@ Customers will have the possibility to see which charging stations are available
 They will also have the opportunity to book a charge at a station at a certain timeframe in advance and to start the charging process remotely.
 They will be notified when the process has finished and the car is fully charged, and they will be able to pay from the application.
 Moreover, the eMall service has a smart system that suggests to the customer the optimal charging solution, based on their schedule, the charging cost and the current state of charge.
-On the other hand Charging Point Operators will be able to perform their operations such as start a charging process.
+On the other hand Charging Point Operators will be able to select energy options and set special offers.
 \subsubsection{Goals}
 \begin{enumerate}[label=$\bullet$ \textbf{G\arabic*:}]
         \item \textbf{Allow users to obtain information about nearby charging stations}
         \\
-        The customer can view information about any nearby charging station, 
+        The customer can view information about any nearby charging station,  
         such as charging cost and about special offers, availability of every type of charging socket, 
         and if a certain type of socket is occupied at the time,
          the estimated time for the first to be free.
@@ -44,12 +44,9 @@ On the other hand Charging Point Operators will be able to perform their operati
         \\
         The Charging Point Operator will have the possibility to choose wheter to aquire energy automatically or to acquire it manually from a specific energy provider.
         An other option will be to storage the energy into the batteries if they are presents.
-        \item \textbf{Allow Charging Point Operators to dinamically choose the charging cost and to make offers}
+        \item \textbf{Allow Charging Point Operators to dinamically choose the charging cost and to set offers}
         \\
         The Charging Point Operator will have the possibility to select the charging cost price based on the energy providers prices. They will also can set special offers based on the energy providers prices
-        
-
-
 \end{enumerate}
 
 \subsection{Scope}
@@ -63,34 +60,35 @@ including the reference to which part controls the phenomena.
         \begin{tabular}{|c|c|c|}
         \hline
         \textbf{Phenomenon}                                        & \textbf{Controller} & \textbf{Shared} \\ \hline
-        User charges his vehicle at charging stations  & W          & N      \\ \hline
-        User books a charge at a charging station         & W          & Y      \\ \hline
-        User connects the vehicle at the charging station              & W          & N      \\ \hline
-        User receives QR code for his booking      & M          & Y      \\ \hline
-        User authenticates with a QR code at the station at the selected timeslot      & M          & Y      \\ \hline
-        User remotely starts the charge                   & W          & Y      \\ \hline       
-        User registration                                 & M          & Y      \\ \hline
-        User login                                        & W          & Y      \\ \hline
-        User views a charging station's information       & W          & Y      \\ \hline
-        User pays for the charge                          & W          & N      \\ \hline
-        User receives advice on the optimal place to charge            & W          & Y      \\ \hline
-        User is notified when the charge has been completed   & W          & Y      \\ \hline
+        Customer charges his vehicle at charging stations  & W          & N      \\ \hline
+        Customer books a charge at a charging station         & W          & Y      \\ \hline
+        Customer connects the vehicle at the charging station              & W          & N      \\ \hline
+        Customer receives QR code for his booking      & M          & Y      \\ \hline
+        Customer authenticates with a QR code at the station at the selected timeslot      & M          & Y      \\ \hline
+        Customer remotely starts the charge                   & W          & Y      \\ \hline       
+        Customer registration                                 & M          & Y      \\ \hline
+        Customer login                                        & W          & Y      \\ \hline
+        Customer views a charging station's information       & W          & Y      \\ \hline
+        Customer pays for the charge                          & W          & N      \\ \hline
+        Customer receives advice on the optimal place to charge            & W          & Y      \\ \hline
+        Customer is notified when the charge has been completed   & W          & Y      \\ \hline
         Charging Point Operator chooses from which energy provider to acquire energy   & W          & Y      \\ \hline
         Charging Point Operator decides to charge the station's battery    & W          & Y      \\ \hline
-        
+        Charging Point Operator select the cost for charging &W          & Y      \\ \hline
+        Charging Point Operator login &W          & Y      \\ \hline
        \end{tabular}
 \end{table}
 
 \subsection{Definitions, Acronyms, Abbrevations}
 \subsubsection{Definitions}
 \begin{itemize}
-        \item \textbf{Users:} The people whom this service is directed. 
-        They can belong to any age and gender. \label{Users}
-        Their goal is to efficiently charge their electric vehicle.
+        \item \textbf{Customers:} The people whom this service is directed. 
+        They can belong to any age and gender. \label{Customer}
+        Their goal is to efficiently charge their electric vehicle.        
         \item \textbf{Charging stations:} Places that offer the service of electric vehicle recharging.
         \item \textbf{e-Mobility Service Providers:} The companies that offer the service of charging at different stations.
-        \item \textbf{Charging Point Operators:} The companies that manage charging stations (one or more).
-        \item \textbf{Distribution System Operators:} The charging station's energy providers.
+        \item \textbf{Charging Point Operators:} The companies that manage charging stations (one or more).\label{CPO}
+        \item \textbf{Distribution System Operators:} The charging station's energy providers.\label{DSO}
         \item \textbf{Charging Point Managment System:} The single CPO's system to manage all the IT infrastructure.
         \item \textbf{Notification:} It's an alert that a certain event occurred. 
         This alert can be a "Push Notification" on the smartphone, an SMS, an email and so on.
@@ -131,8 +129,8 @@ including the reference to which part controls the phenomena.
         \item \textbf{Section 2: Overall Description} \\This section shows the possible scenarios of interaction by the user with the system. It also offers a summarized description about the overall organization of the system, the hardware and software constraints and the interfaces needed to get it to work.
         It also contains a description of all the features offered by the application, and of the actors who use it.
         
-        \item \textbf{Section 3: Specific Requirements} \\This section contains several visual mockups in order to explain the interfaces listed in Section 2. 
-        It also contains a description of functional requirements through use cases and diagrams.
+        \item \textbf{Section 3: Specific Requirements} \\This section contains system requirements specification. It includes functional requirements described through some scenarios, use cases and sequence diagrams. 
+        In this section non-funtional requirements are specified too. Morevore requiremens are mapped to the goals of the system.
 
         \item \textbf{Section 4: Formal Analysis through Alloy} \\This section contains the description of the analysis' objective and the formal analysis with the use of Alloy.
         \item \textbf{Section 5: Effort Spent} \\This section presents the total effort spent by the project's members.
