@@ -13,6 +13,7 @@ A different interface is when the system sends push notifications to a user or r
 %%% ==> CPMS
 %%%
 \subsection{Functional Requirements}
+
 \subsubsection{Use case diagrams}
 \begin{enumerate}
     \item \textbf{Unregistered Customer}
@@ -23,13 +24,13 @@ A different interface is when the system sends push notifications to a user or r
         \end{center}
     \end{figure}
 
-    %\item \textbf{Registered Customer}
-    %\begin{figure}[H]
-     %   \begin{center}
-      %      \includegraphics[width=\textwidth]{img/Registered_customer.PNG}
-       %     \caption{Registered Customer - Use Case Diagram}
-        %\end{center}
-    %\end{figure}
+    \item \textbf{Registered Customer}
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=\textwidth]{img/Registered_customer.PNG}
+            \caption{Registered Customer - Use Case Diagram}
+        \end{center}
+    \end{figure}
 
     \item \textbf{Charging Point Operator}
     \begin{figure}[H]
@@ -41,8 +42,12 @@ A different interface is when the system sends push notifications to a user or r
 
 \end{enumerate}
 \subsubsection{Use case tables}
-
-
+\subsubsection{Sequence diagrams}
+This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
+\subsubsection{Requirements}
+%TODO write requirements and map them with goals and domain assumptions
+\subsubsection{Traceability Matrix}
+%TODO mapping between requirements and use cases
 \subsection{Performance Requirements}
 \subsection{Design Constraints}
 \subsubsection{Standards Compliance}
@@ -51,6 +56,8 @@ A different interface is when the system sends push notifications to a user or r
 
 \subsection{Software System Attributes}
 \subsubsection{Reliability}
+The system must prevent downtime, in order to let Customers to charge their vehicle in every moment. At the same time CPO must be granted to access the system and perform their actions all the time.
+To guarantee that the system is up most of the time, preventive regular maintanance should be perfomed. To make the system 24/07 accesible the server could be duplicated and the duplicated one run in parallel. So that during failures and maintanance of one of them, users can access the other one.
 \subsubsection{Availability}
 \subsubsection{Security}
 \subsubsection{Maintainability}
