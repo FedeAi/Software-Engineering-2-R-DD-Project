@@ -42,32 +42,185 @@ A different interface is when the system sends push notifications to a user or r
 
 \end{enumerate}
 \subsubsection{Use case tables}
+%%SIGNUP
+\begin{longtable}{ | c | p{10cm} | }
+
+    \hline
+    ID               & 1                        \\ \hline
+    Name             & Sign Up Customer   \\
+    \hline
+    Actor            & Unregistered Customer \\
+    \hline
+    Entry conditions &
+    \begin{itemize}
+        \item Unregistered Customer has downloaded and opened the application on his smartphone
+    \end{itemize}
+    \\
+    \hline
+
+    Input            & email to use for the registration \\ \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The application displays the Sign In screen
+        \item Unregistered Customer clicks on "Sign Up"
+        \item The application displays a list of fields that User must compile: username, email, password, birthdate
+        \item Unregistered Customer inserts the mandatory data and accepts the "Terms of Services"
+        \item Unregistered Customer clicks on confirm button
+        \item The application displays the acceptance of registration and invites the Customer to go on his inbox in order to confirm the registration
+        \item Customer opens his inbox, checks the e-mails and clicks on confirmation link
+    \end{itemize} \\
+    \hline
+    Exit conditions  & Customer registration has been successful: user data are stored in the database of the system. Customer can now Login with his credentials. \\ \hline
+    Output           & \begin{itemize}
+        \item The email of the Customer is stored in the database of the application
+        \item The Customer receives the email of confirmation
+    \end{itemize} \\
+    \hline
+    \hline
+    Exception 1      & Customer insert an e-mail which is already stored in the database. So, after the inserts his data and clicks on confirm, the application displays an error page which tells the Customer is already registered to the service and invites him to login with that e-mail. \\
+    \hline
+    Exception 2      & Customer inserts an invalid e-mail. So, after the Customer clicks on confirm button, the application displays the same page and an error message, which suggests to the Customer to check the e-mail inserted or to change it. \\
+    \hline
+    \caption{Sign Up Customer} \\
+\end{longtable}
+%%LOGIN
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 2 \\
+    \hline
+    Name             & Login Customer on the application\\
+    \hline
+    Actor            & Customer \\
+    \hline
+    Entry conditions & \begin{itemize}[nosep,after=\strut]
+        \item Customer has downloaded and opened the application on his smartphone
+        \item Customer has registered to the service
+    \end{itemize}\\ \hline
+    Input            & Customer email and password associated to a valid registration \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The system displays the Login page
+        \item Customer inserts in apposite fields the credentials for logging in and presses the Login button.
+        \item The system checks the correctness of the credential inserted.
+        \item The system displays the home page of the application.
+    \end{itemize} \\
+    \hline
+    Exit condition   & User is logged in \\
+    \hline
+    \hline
+    Exception 1      & Customer inserts wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
+    \hline
+    \caption{Login Customer} \\
+\end{longtable}
+%%BOOK A CHARGE
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 3\\
+    \hline
+    Name     & Book a Charge \\
+    \hline
+    Actor            & Customer\\
+    \hline
+    Entry conditions & Customer has logged in \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The application displays the home page, which is a map with all the nearby charging stations.
+        \item The Customer chooses a charging station.
+        \item The application displays all information about a charging station, including available timeslots.
+        \item The Customer selects an available timeslot for the recharge and clicks the confirm button.
+        \item The application displays a confirm popup, with the essential details of the upcoming booking.
+        \item Customer clicks the confirm button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a brief summary of the booking, including the unique ID number of the booking.\\
+    \hline
+    Output           & \begin{itemize}
+        \item   The system has the received the booking.
+        \item   The Customer sees the ticket in his bookings section.
+    \end{itemize}\\
+    \hline
+    \hline
+    Exception 1      &  Customer selects an unavailable timeslot at a charging station. In this case, the application displays an error message stating the situation, and redirects the Customer to the home page. \\
+    \hline
+    Exception 2      & Customer presses on confirm button but it has already got a booking at the same time in his current bookings, which is still valid. In this case, the application displays an error page, and redirects the Customer to the home page.       \\
+    \hline
+    \caption{Book a charge}\\
+\end{longtable}
+%%REMOTELYSTART
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 4\\
+    \hline
+    Name     & Remotely Start a Charge \\
+    \hline
+    Actor            & Customer\\
+    \hline
+    Entry conditions & \begin{itemize}[nosep,after=\strut]
+        \item Customer has booked a charge.
+        \item Customer has driven his car to the socket of the said booking at the specified time.
+        \item Customer has opened the application.
+    \end{itemize}
+        \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The application displays a map with all the nearby charging stations.
+        \item The Customer selects the "Bookings" menu from the side menu.
+        \item The application displays all his current and previous bookings.
+        \item The Customer selects the booking related to current station, socket and time.
+        \item The application displays the brief summary of his booking, and also an "Unlock Socket" button.
+        \item Customer clicks the button, and then the application displays a confirmation message. 
+        \item The Customer connects his electric vehicle to the socket.
+        \item The application displays an updated version of the summary of the booking with an "Start Charging" button.
+        \item The Customer clicks the said button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a confirmation message with the estimated time of charge completion or the end of his timeslot, and then redirects the user to the home page.\\
+    \hline
+    Output           &  The Customer's vehicle recharges.
+    \\
+    \hline
+    \hline
+    Exception 1      &  Customer clicks on the "Start Charging" button while his vehicle is not connected. In this case, the application displays an error message that says the there isn't any vehicle to the socket, and redirects the Customer to the current booking view. \\
+    \hline
+    \caption{Remotely start a charge}\\
+\end{longtable}
 \subsubsection{Sequence diagrams}
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
+
+
+
+
 \subsubsection{Requirements}
 %TODO write requirements and map them with goals and domain assumptions
 \subsubsection{Traceability Matrix}
 %TODO mapping between requirements and use cases
 \subsection{Performance Requirements}
+
+Performance requirements are not particularly critical for the system, but it is anyway desirable that the system has a good response time, which could be included between 0.1 and 2 seconds.
+Otherwise, Customers and CPOs may think that the service is interrupted or does not work.
+Moreover the system has to guarantee a good experience for all users, taking into account that not everyone has access to high speed internet. Therefore,
+the system should minimize the amount of broadband needed in order to fully
+download the content.
+The server infrastructure will be designed to be scalable so that it will be possible to adapt it to
+the increment of users when the application diffusion will increase.
+Finally, the system should be able to handle many concurrent users, at least
+100 000.
 \subsection{Design Constraints}
 \subsubsection{Standards Compliance}
 \subsubsection{Hardware Limitations}
 \subsubsection{Any Other Constraint}
 
 \subsection{Software System Attributes}
-\subsubsection{Reliability}
-The system must prevent downtime, in order to let Customers to charge their vehicle in every moment. At the same time CPO must be granted to access the system and perform their actions all the time.
-To guarantee that the system is up most of the time, preventive regular maintanance should be perfomed. To make the system 24/07 accesible the server could be duplicated and the duplicated one run in parallel. So that during failures and maintanance, of one of them, users can access the other one.
-\subsubsection{Availability}
-Given the fact that eMall is not an emergency service or anything related to critical situations, the system must provide availability of 99.9\%. This means that the average time between the occurrence of a fault and service recovery (MTTR) has to be contained at around 0.365 days per year. 
-\subsubsection{Security}
-The data provided by the users contain some sensitive information, so the security aspect cannot be underestimated. The central database must be protected with all the available measures to avoid any external or internal attack. The passwords inside the data store have to be encrypted and in case of password recovery, this must never be sent in clear.
-Communication between parties are encrypted and goes on a secure channel (through SSL protocol) to avoid traffic sniffing and spoofing, thus avoiding cheating attacks and guaranteeing privacy and consistency.
-\subsubsection{Maintainability}
-The system must guarantee a high level of maintainability. It must be designed in such a way that permits future addition of functionalities with minimum effort.
-Design techniques must in fact guarantee an high reusability. The code must be well documented and hard-coding must be avoided. A testing routine has to be provided and it has to cover at least 75\% of the entire codebase, excluding interfaces code.
 
-
-\subsubsection{Portability}
-The application must be developed for two different platforms: iOS and Android smartphones. The web application must run on any OS (like Windows, Mac OS, Linux, etc) that supports a web browser. Even mobile devices like iPads and Android tablets must be able to access the web app.
+\begin{enumerate}[label=\textbf{NFR\arabic*}:]
+    \item \textbf{Reliability}\\
+    The system must prevent downtime, in order to let Customers to charge their vehicle in every moment. At the same time CPO must be granted to access the system and perform their actions all the time.
+    To guarantee that the system is up most of the time, preventive regular maintanance should be perfomed. To make the system 24/07 accesible the server could be duplicated and the duplicated one run in parallel. So that during failures and maintanance, of one of them, users can access the other one. 
+    \item \textbf{Availability}\\
+    Given the fact that eMall is not an emergency service or anything related to critical situations, the system must provide availability of 99.9\%. This means that the average time between the occurrence of a fault and service recovery (MTTR) has to be contained at around 0.365 days per year.
+    \item \textbf{Security}\\
+    The data provided by the users contain some sensitive information, so the security aspect cannot be underestimated. The central database must be protected with all the available measures to avoid any external or internal attack. The passwords inside the data store have to be encrypted and in case of password recovery, this must never be sent in clear.
+    Communication between parties are encrypted and goes on a secure channel (through SSL protocol) to avoid traffic sniffing and spoofing, thus avoiding cheating attacks and guaranteeing privacy and consistency.
+    \item \textbf{Maintainability}\\
+    The system must guarantee a high level of maintainability. It must be designed in such a way that permits future addition of functionalities with minimum effort.
+    Design techniques must in fact guarantee an high reusability. The code must be well documented and hard-coding must be avoided. A testing routine has to be provided and it has to cover at least 75\% of the entire codebase, excluding interfaces code.
+    \item \textbf{Portability}\\
+    The application must be developed for two different platforms: iOS and Android smartphones. The web application must run on any OS (like Windows, Mac OS, Linux, etc) that supports a web browser. Even mobile devices like iPads and Android tablets must be able to access the web app.
+\end{enumerate}
 
