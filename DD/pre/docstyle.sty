@@ -1,0 +1,82 @@
+\ProvidesPackage{docstyle}
+
+%========================================================================================%
+% Packages
+%========================================================================================%
+
+% PACKAGES FOR LANGUAGE AND FONT
+\usepackage[italian]{babel} % The document is in English  
+\babeltags{en = english}
+\usepackage[utf8]{inputenc} % UTF8 encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage[11pt]{moresize} % Big fonts
+
+% PACKAGES FOR IMAGES
+\usepackage{graphicx}
+\usepackage{transparent} % Enables transparent images
+\usepackage{eso-pic} % For the background picture on the title page
+\usepackage{subfig} % Numbered and caption subfigures using \subfloat.
+\usepackage{tikz} % A package for high-quality hand-made figures.
+\usepackage{svg}
+\usetikzlibrary{}
+\usepackage{caption} % Coloured captions
+\usepackage{xcolor} % Coloured captions
+\usepackage{amsthm,thmtools,xcolor} % Coloured "Theorem"
+\usepackage{float}
+\usepackage{placeins}
+
+% STANDARD MATH PACKAGES
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage[overload]{empheq} % For braced-style systems of equations.
+\usepackage{fix-cm} % To override original LaTeX restrictions on sizes
+\usepackage{xfrac}
+
+% PACKAGES FOR TABLES
+\usepackage{tabularx}
+\usepackage{longtable} % Tables that can span several pages
+\usepackage{colortbl}
+\usepackage{tabu}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{nicematrix}
+
+% PACKAGES FOR ALGORITHMS (PSEUDO-CODE)
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% OTHER PACKAGES
+\usepackage{pdfpages} % To include a pdf file
+\usepackage{afterpage}
+\usepackage{lipsum} % DUMMY PACKAGE
+\usepackage{fancyhdr} % For the headers
+\fancyhf{}
+\usepackage{enumitem}
+
+\usepackage{import}
+% \usepackage{hyperref}
+\usepackage{url}
+\usepackage{adjustbox}
+\usepackage{scrextend}
+\usepackage{alltt}
+
+%========================================================================================%
+% Colors
+%========================================================================================%
+
+%========================================================================================%
+% Graphics
+%========================================================================================%
+\graphicspath{%
+	{./img/}%
+	{./img/poli/}%
+	{./img/datasets/}%
+	{./img/model/}%
+	{./img/rowcol/}%
+	{./img/risultati/}%
+}
