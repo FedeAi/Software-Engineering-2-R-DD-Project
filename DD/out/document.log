@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.10.0 (TeX Live 2019/Debian)  (format=lualatex 2022.11.28)  11 DEC 2022 22:17
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/Debian)  (format=lualatex 2022.11.28)  12 DEC 2022 08:51
  restricted system commands enabled.
 **document.tex
 (./document.tex
@@ -1206,7 +1206,16 @@ Package luatex.def Info: img/logo-polimi-new.pdf  used on input line 12.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}<./img/logo-polimi-new.pdf>]
 
-(./out/document.toc)
+(./out/document.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write4
 
 \openout4 = document.toc
@@ -1214,7 +1223,8 @@ Package luatex.def Info: img/logo-polimi-new.pdf  used on input line 12.
 
 ]
 \openout2 = tex/section1.aux
- (./tex/section1.tex) [1
+
+(./tex/section1.tex) [1
 
 
 ]
@@ -1224,13 +1234,13 @@ Package luatex.def Info: img/logo-polimi-new.pdf  used on input line 12.
 
 ]
 \openout2 = tex/section3.aux
-
-(./tex/section3.tex) [3
+ (./tex/section3.tex) [3
 
 
 ]
 \openout2 = tex/section4.aux
- (./tex/section4.tex) [4
+
+(./tex/section4.tex) [4
 
 
 ]
@@ -1240,17 +1250,7 @@ Package luatex.def Info: img/logo-polimi-new.pdf  used on input line 12.
 
 ]
 \openout2 = tex/section6.aux
-
-(./tex/section6.tex
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+ (./tex/section6.tex)
 Overfull \hbox (47.30826pt too wide) in paragraph at lines 2--34
 [] 
  []
@@ -1273,7 +1273,7 @@ Here is how much of LuaTeX's memory you used:
  617 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 14 attribute, 67 glue_spec
 , 9 attribute_list, 3 write nodes
-   avail lists: 1:2,2:353,3:31,4:7,5:53,6:12,7:347,8:1,9:128,10:5,11:36
+   avail lists: 1:2,2:513,3:95,4:37,5:138,6:27,7:951,8:1,9:171,10:5,11:98
  40168 multiletter control sequences out of 65536+600000
  63 fonts using 5842387 bytes
  68i,7n,64p,819b,220s stack positions out of 5000i,500n,10000p,200000b,100000s
@@ -1281,7 +1281,7 @@ Here is how much of LuaTeX's memory you used:
 lic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb>
-Output written on document.pdf (9 pages, 170603 bytes).
+Output written on document.pdf (9 pages, 176017 bytes).
 
 PDF statistics: 57 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream
