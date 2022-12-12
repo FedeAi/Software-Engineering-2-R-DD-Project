@@ -1,2 +1,66 @@
 \section{Formal Analysis}
 \subsection{Alloy code}
+
+
+\begin{lstlisting}[language=alloy]
+    
+    
+
+    //Signatures
+
+    abstract sig Bool {}
+    one sig TRUE extend Bool {}
+    one sig FALSE extend Bool {}
+
+    sig Email {}
+    sig Customer{
+	    username: one String
+	    email: one Email
+	    password: one String
+	    birthday: one String
+	    isActive: one Bool
+    }
+
+    sig CPO {
+	    name: one String
+	    username: one String
+	    password: one String
+    }
+
+    //We use a simplified model of a time
+    sig Time {
+	    time: one Int
+    }{time >= 0}
+
+    sig Booking {
+	    startTime: one Time
+	    endTime: one Time
+    }
+    
+    
+    
+   
+    
+    -----------------------------------------------------------------
+    
+    // Facts
+    
+    fact{ 
+    }
+    
+    
+    ------------------------------------------------------------
+    //assertions
+    
+    
+    
+    
+    
+    ------------------------------------------------------------
+    //predicates
+    
+    
+    
+   
+    
+    \end{lstlisting}
