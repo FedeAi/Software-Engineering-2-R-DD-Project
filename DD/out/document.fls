@@ -334,8 +334,6 @@ INPUT ./out/tex/section5.aux
 INPUT ./out/tex/section5.aux
 INPUT ./out/tex/section6.aux
 INPUT ./out/tex/section6.aux
-INPUT ./out/tex/section7.aux
-INPUT ./out/tex/section7.aux
 OUTPUT ./out/document.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -401,6 +399,10 @@ OUTPUT ./out/document.toc
 OUTPUT ./out/tex/section1.aux
 INPUT ./tex/section1.tex
 INPUT ./tex/section1.tex
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ts1-lmr10.tfm
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt10.tfm
 OUTPUT ./out/tex/section2.aux
 INPUT ./tex/section2.tex
 INPUT ./tex/section2.tex
@@ -416,9 +418,6 @@ INPUT ./tex/section5.tex
 OUTPUT ./out/tex/section6.aux
 INPUT ./tex/section6.tex
 INPUT ./tex/section6.tex
-OUTPUT ./out/tex/section7.aux
-INPUT ./tex/section7.tex
-INPUT ./tex/section7.tex
 INPUT ./out/document.aux
 INPUT ./out/tex/section1.aux
 INPUT ./out/tex/section1.aux
@@ -432,10 +431,10 @@ INPUT ./out/tex/section5.aux
 INPUT ./out/tex/section5.aux
 INPUT ./out/tex/section6.aux
 INPUT ./out/tex/section6.aux
-INPUT ./out/tex/section7.aux
-INPUT ./out/tex/section7.aux
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb

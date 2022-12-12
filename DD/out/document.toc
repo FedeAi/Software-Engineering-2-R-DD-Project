@@ -10,16 +10,15 @@
 \contentsline {subsection}{\numberline {1.4}Revision History}{1}%
 \contentsline {subsection}{\numberline {1.5}Reference Documents}{1}%
 \contentsline {subsection}{\numberline {1.6}Document Structure}{1}%
-\contentsline {section}{\numberline {2}Architectural Design}{2}%
-\contentsline {subsection}{\numberline {2.1}Overview: high-level components and interactions}{2}%
-\contentsline {subsection}{\numberline {2.2}Component view}{2}%
-\contentsline {subsection}{\numberline {2.3}Deployment view}{2}%
-\contentsline {subsection}{\numberline {2.4}Runtime view}{2}%
-\contentsline {subsection}{\numberline {2.5}Component interface}{2}%
-\contentsline {subsection}{\numberline {2.6}Selected architectural styles and patterns}{2}%
-\contentsline {subsection}{\numberline {2.7}Other design decisions}{2}%
-\contentsline {section}{\numberline {3}User interface design}{3}%
-\contentsline {section}{\numberline {4}Requirements traceability}{4}%
-\contentsline {section}{\numberline {5}Implementation, integration and test plan}{5}%
-\contentsline {section}{\numberline {6}Effort spent}{6}%
-\contentsline {section}{\numberline {7}References}{7}%
+\contentsline {section}{\numberline {2}Architectural Design}{3}%
+\contentsline {subsection}{\numberline {2.1}Overview: high-level components and interactions}{3}%
+\contentsline {subsection}{\numberline {2.2}Component view}{3}%
+\contentsline {subsection}{\numberline {2.3}Deployment view}{3}%
+\contentsline {subsection}{\numberline {2.4}Runtime view}{3}%
+\contentsline {subsection}{\numberline {2.5}Component interface}{3}%
+\contentsline {subsection}{\numberline {2.6}Selected architectural styles and patterns}{3}%
+\contentsline {subsection}{\numberline {2.7}Other design decisions}{3}%
+\contentsline {section}{\numberline {3}User interface design}{4}%
+\contentsline {section}{\numberline {4}Requirements traceability}{5}%
+\contentsline {section}{\numberline {5}Implementation, integration and test plan}{6}%
+\contentsline {section}{\numberline {6}Effort spent}{7}%
