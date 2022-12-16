@@ -134,6 +134,16 @@ If the payment has been successful, the service shows him the success screen and
         \caption{BPMN diagram pay for the service method}
     \end{center}
 \end{figure}
+\subsubsection{Change active vehicle for the suggestions}
+This functionality allows the \textbf{Customers} (\ref{Customer}) to change the active vehicle for suggestions.
+The Customer must access the "Change Active Vehicle" submenu in the app.
+He can insert the license plate and clicks "Submit". The system then verifies that the vehicle is actually owner by the current Customer, and then returns a success message. If the process is not successful, an error message is shown.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/fun-cha-v.png}
+        \caption{BPMN diagram change active vehicle method}
+    \end{center}
+\end{figure}
 \subsubsection{Send suggestions}
 This functionality allows the \textbf{Customer} (\ref{Customer}) to receive optimal suggestions for charging.
 The system continuously monitors a user's charging level, his schedule and his location.

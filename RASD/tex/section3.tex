@@ -157,9 +157,8 @@ The system interacts with users to receive booking requests or to send informati
     Actor            & Customer\\
     \hline
     Entry conditions & \begin{itemize}[nosep,after=\strut]
-        \item Customer has booked a charge.
-        \item Customer has driven his car to the socket of the said booking in time.
-        \item Customer has opened the application.
+        \item Customer has booked a charge and has driven his car to the socket of the said booking in time.
+        \item Customer has opened the application and logged in.
     \end{itemize}
         \\
     \hline
@@ -185,6 +184,40 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Remotely start a charge}\\
 \end{longtable}
+%% PAY FUNCTION
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 5\\
+    \hline
+    Name     & Pay for the Charging Service \\
+    \hline
+    Actor            & Customer\\
+    \hline
+    Entry conditions & \begin{itemize}[nosep,after=\strut]
+        \item Customer has used the service for a charge.
+        \item Customer has opened the application and logged in.
+    \end{itemize}
+        \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The application displays a map with all the nearby charging stations.
+        \item The Customer selects the "Bookings" menu from the side menu.
+        \item The application displays all his current and previous bookings.
+        \item The Customer selects the booking related to the one that he wants to pay.
+        \item The application displays the brief summary of his booking, and also a "Pay" button.
+        \item Customer clicks the button, and then the application redirects him to an external payment platform, where he can input his preferred payment method and then pay. 
+    \end{itemize}\\
+    \hline
+    Exit condition   & The Customer will then be returned to the booking summary once the payment has been finished, with a success message.\\
+    \hline
+    Output           &  The Customer's booking has been paid.
+    \\
+    \hline
+    \hline
+    Exception 1      &  Customer inputs an invalid payment method. In this case, the external services closes and the he is returned to the application. The application then displays an error message that says the payment method is invalid. \\
+    \hline
+    \caption{Pay for the Charging Service}\\
+\end{longtable}
+%%
 \subsubsection{Sequence diagrams}
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 
