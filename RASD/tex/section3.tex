@@ -3,14 +3,14 @@
 \subsubsection{User Interfaces}
 The user interface of eMall is a mobile application, with an easy to use design.
 It should be available on every major mobile operating system.
+On the other hand, the interface of the CPMS subsystem is a web application with a dashboard with all the available features.
+It should be available on every major web browser.
 \subsubsection{Hardware Interfaces}
-The system is fully operated on the Internet, so it doesn't feature any hardware interface, apart from the mobile device needed to access the service.
+The system is fully operated on the Internet, so it doesn't feature any hardware interface, apart from the device needed to access the service.
 %\subsubsection{Software Interfaces}
 \subsubsection{Communication Interfaces}
-The main communication interfaces of the platform are the users and CPMSs.
-The system interacts with users to receive booking requests or to send information, and to CPMSs to receive information about charging stations or to remotely interact with the charging socket.
-A different interface is when the system sends push notifications to a user or retrieves the users' location, charging status and schedule.
-%%% ==> CPMS
+The main communication interfaces of the platform are the users and CPOs.
+The system interacts with users to receive booking requests or to send information, and to CPOs to let them select different charging station options.
 %%%
 \subsection{Functional Requirements}
 
@@ -58,7 +58,12 @@ A different interface is when the system sends push notifications to a user or r
     \\
     \hline
 
-    Input            & email to use for the registration \\ \hline
+    Input            & \begin{itemize}
+        \item username
+        \item email
+        \item password
+        \item birthdate
+    \end{itemize} \\ \hline
     Events flow      & \begin{itemize}[nosep,after=\strut]
         \item The application displays the Sign In screen
         \item Unregistered Customer clicks on "Sign Up"
@@ -76,9 +81,9 @@ A different interface is when the system sends push notifications to a user or r
     \end{itemize} \\
     \hline
     \hline
-    Exception 1      & Customer insert an e-mail which is already stored in the database. So, after the inserts his data and clicks on confirm, the application displays an error page which tells the Customer is already registered to the service and invites him to login with that e-mail. \\
+    Exception 1      & Customer inserts an e-mail which is already stored in the database. So, after he inserts his data and clicks on confirm, the application displays an error page which tells him that he is already registered to the service and invites him to login with that e-mail. \\
     \hline
-    Exception 2      & Customer inserts an invalid e-mail. So, after the Customer clicks on confirm button, the application displays the same page and an error message, which suggests to the Customer to check the e-mail inserted or to change it. \\
+    Exception 2      & Customer inserts an invalid e-mail. So, after the Customer clicks on the confirm button, the application displays the same page and an error message, which suggests to the Customer to check the e-mail inserted or to change it. \\
     \hline
     \caption{Sign Up Customer} \\
 \end{longtable}
@@ -106,7 +111,7 @@ A different interface is when the system sends push notifications to a user or r
     Exit condition   & User is logged in \\
     \hline
     \hline
-    Exception 1      & Customer inserts wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
+    Exception 1      & Customer inserts a wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
     \hline
     \caption{Login Customer} \\
 \end{longtable}
@@ -123,8 +128,8 @@ A different interface is when the system sends push notifications to a user or r
     Events flow      & \begin{itemize}[nosep,after=\strut]
         \item The application displays the home page, which is a map with all the nearby charging stations.
         \item The Customer chooses a charging station.
-        \item The application displays all information about a charging station, including available timeslots.
-        \item The Customer selects an available timeslot for the recharge and clicks the confirm button.
+        \item The application displays all information about a charging station, including its current availability.
+        \item The Customer selects an available station and type of socket for the recharge and clicks the confirm button.
         \item The application displays a confirm popup, with the essential details of the upcoming booking.
         \item Customer clicks the confirm button.
     \end{itemize}\\
@@ -132,14 +137,14 @@ A different interface is when the system sends push notifications to a user or r
     Exit condition   & The application displays a brief summary of the booking, including the unique ID number of the booking.\\
     \hline
     Output           & \begin{itemize}
-        \item   The system has the received the booking.
-        \item   The Customer sees the ticket in his bookings section.
+        \item   The system has the received the booking, and will mark the socket as booked for 15 minutes, and then either the booking is fulfilled by the Customer, or the system will mark the socket as available.
+        \item   The Customer sees the summary in his bookings section, with a reminder that the booking only lasts 15 minutes.
     \end{itemize}\\
     \hline
     \hline
-    Exception 1      &  Customer selects an unavailable timeslot at a charging station. In this case, the application displays an error message stating the situation, and redirects the Customer to the home page. \\
+    Exception 1      &  Customer selects an unavailable charging station. In this case, the application displays an error message stating the situation, with the time for the first socket of the selected type to be available. \\
     \hline
-    Exception 2      & Customer presses on confirm button but it has already got a booking at the same time in his current bookings, which is still valid. In this case, the application displays an error page, and redirects the Customer to the home page.       \\
+    Exception 2      & Customer presses on confirm button, but he has already booked a socket currently. In this case, the application displays an error page, and redirects the Customer to the home page.       \\
     \hline
     \caption{Book a charge}\\
 \end{longtable}
@@ -153,7 +158,7 @@ A different interface is when the system sends push notifications to a user or r
     \hline
     Entry conditions & \begin{itemize}[nosep,after=\strut]
         \item Customer has booked a charge.
-        \item Customer has driven his car to the socket of the said booking at the specified time.
+        \item Customer has driven his car to the socket of the said booking in time.
         \item Customer has opened the application.
     \end{itemize}
         \\
@@ -166,11 +171,11 @@ A different interface is when the system sends push notifications to a user or r
         \item The application displays the brief summary of his booking, and also an "Unlock Socket" button.
         \item Customer clicks the button, and then the application displays a confirmation message. 
         \item The Customer connects his electric vehicle to the socket.
-        \item The application displays an updated version of the summary of the booking with an "Start Charging" button.
+        \item The application displays an updated version of the summary of the booking with a "Start Charging" button.
         \item The Customer clicks the said button.
     \end{itemize}\\
     \hline
-    Exit condition   & The application displays a confirmation message with the estimated time of charge completion or the end of his timeslot, and then redirects the user to the home page.\\
+    Exit condition   & The application displays a confirmation message with the estimated time of charge completion, and then redirects the user to the home page.\\
     \hline
     Output           &  The Customer's vehicle recharges.
     \\
@@ -184,10 +189,103 @@ A different interface is when the system sends push notifications to a user or r
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 
 
-
-
 \subsubsection{Requirements}
-%TODO write requirements and map them with goals and domain assumptions
+\begin{enumerate}[label=\textbf{-G\arabic*}:]
+    \item {Allow customers to obtain information about nearby charging stations
+          \begin{itemize}
+              \item \textbf{R1:} The system allows customers to view nearby station.
+              \item \textbf{R2:} The system allows customer to select a charging station to view its information.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+          \end{itemize}
+          }
+    \item {Allow customers to book a charge for a certain timeframe
+          \begin{itemize}
+              \item \textbf{R1:} The system allows customers to view nearby station.  
+              \item\textbf{R2:} The system allows customers to select a charging station to view its information.
+              \item \textbf{R3:} The system shows available socket for each charging station.
+              \item \textbf{R4:} The system allows customer to book an available socket in a charging station.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+                            
+          \end{itemize}
+          }
+    \item {Allow customers to start the charge and show predicted charging time
+          \begin{itemize}
+              \item \textbf{R5:} The system allows customers to view personal bookings.
+              \item \textbf{R6:} The system allows customers to select a specific booking.
+              \item \textbf{R7:} The system allows to start a charge for a booking when the vehicle is connected and ready to charge.
+              \item \textbf{R8:} The system shows to the user the predicted charging time when the charge is started.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D9:} The vehicle start charging only when it is connected to the booked socket.
+              \item \textbf{D10:} The socket notifies the CPMS when a vehicle is attached and ready to charge.
+              \item \textbf{D15:} All the sockets present in charging stations feature a system that can retrieve the charging level of a car after it has been connected to the socket.
+          \end{itemize}
+          }
+    \item {Allow customers to know when the charging has finished
+          \begin{itemize}
+              \item \textbf{R9:} The system show the binary charging state (in charge/finished).
+              \item \textbf{R10:} The system recommends alternative day/time slots or store/chains to a user.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D16:} The socket notifies the CPMS when a vehicle has finished to charge.
+          \end{itemize}
+          }
+    \item {Allow customers to pay for the charging service
+          \begin{itemize}
+              \item \textbf{R5:} The system allows customers to view personal bookings.
+              \item \textbf{R6:} The system allows customers to select a specific booking.
+              \item \textbf{R11:} The system allows customers to pay a booked charge.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D8:} A fully functioning payment system is present and returns if a transaction has been successful or not.
+              
+          \end{itemize}
+          }
+    
+          \item {Allow customers to receive suggestions on where to charge
+          \begin{itemize}
+              \item \textbf{R12:} The system periodically searches possible nearby station to charge based on the customer car's battery SoC (<50\%), customer's location, customer's calendar.
+              \item \textbf{R13:} The system sends a push notification if a possible nearby station is found and no suggestions were sent in the previous 1h.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D3:} The customer's mobile device fully supports the push notification technology.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+              \item \textbf{D6:} The data automatically obtained by the system in order to send suggestions to the customer is accurate and truthful.
+              \item \textbf{D14:} Given a license plate number and personal identification, it exists an API that provides the battery level of the vehicle associated with the license plate.
+              
+          \end{itemize}
+          }
+
+
+          \item {Allow Charging Point Operators to decide the energy acquisition options
+          \begin{itemize}
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g. Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
+              \item \textbf{D11:}Every CPO is supplied with login credentials when the system is installed.
+              \item \textbf{D8:}
+              \item \textbf{D8:} 
+              
+          \end{itemize}
+          }
+
+
+          \item {Allow Charging Point Operators to dynamically choose the charging cost and to set offers
+          \begin{itemize}
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g. Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
+              \item \textbf{D11:} Every CPO is supplied with login credentials when the system is installed.
+              \item \textbf{D8:}
+              \item \textbf{D8:}
+              \item \textbf{D8:} 
+              
+          \end{itemize}
+          }
+\end{enumerate}
+
 \subsubsection{Traceability Matrix}
 %TODO mapping between requirements and use cases
 \subsection{Performance Requirements}
@@ -203,7 +301,16 @@ Finally, the system should be able to handle many concurrent users, at least
 100 000.
 \subsection{Design Constraints}
 \subsubsection{Standards Compliance}
+
+The system must be compliant to the GDPR law, as it will mainly used in EU. \newline
+Secure connections must be used for data communication. \newline
+Customers must accept and read the privacy policy during the sign-up phase. \newline
+
 \subsubsection{Hardware Limitations}
+
+Each customer is required to have a smartphone device on which it is possible to install the eMall application. The device must have access to the internet. \newline
+The CPO must have access to the internet using a web browser on a PC.  
+
 \subsubsection{Any Other Constraint}
 
 \subsection{Software System Attributes}
