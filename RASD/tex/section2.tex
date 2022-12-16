@@ -186,19 +186,20 @@ Every reservation made on the e-Mall platform is fulfilled by CPOs.
 \subsection{Assumptions, Dependencies and Constraints}
 \subsubsection{Domain assumptions}
 \begin{enumerate}[label=\textbf{D\arabic*}:]
-    \item Each user who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+    \item Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
     \item Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g. Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).  
     \item The customer's mobile device fully supports the push notification technology.
     \item The customer's schedule and location is accessible by the platform.
     \item The charging station checks the charging sockets, making sure that nobody can occupy a reserved socket apart from the booker.
-    \item The data automatically obtained by the system in order to send suggestions to the user is accurate and truthful.
+    \item The data automatically obtained by the system in order to send suggestions to the customer is accurate and truthful.
     \item Every CPMS system has the same communication methods. (Uniform APIs)
     \item A fully functioning payment system is present and returns if a transaction has been successful or not.
-    \item Every station has at least one charging socket.**
-    \item Every eMSP must interact with at least one CPO.**
+    \item The vehicle start charging only when it is connected to the booked socket.
+    \item The socket notifies the CPMS when a vehicle is attached and ready to charge.
     \item Every CPO is supplied with login credentials when the system is installed.
     \item Every Charging Station has a unique identification number (ID).
     \item Sockets in each station have a unique identification number (ID). Sockets in different charging stations could have the same ID.
     \item Given a license plate number and personal identification, it exists an API that provides the battery level of the vehicle associated with the license plate.
     \item All the sockets present in charging stations feature a system that can retrieve the charging level of a car after it has been connected to the socket.
+    \item The socket notifies the CPMS when a vehicle has finished to charge.
 \end{enumerate}
