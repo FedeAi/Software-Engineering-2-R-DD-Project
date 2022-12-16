@@ -9,45 +9,121 @@
     //Signatures
 
     abstract sig Bool {}
-    one sig TRUE extend Bool {}
-    one sig FALSE extend Bool {}
+    one sig TRUE extends Bool {}
+    one sig FALSE extends Bool {}
+
+
+    abstract sig BatteryPolicy {}
+    one sig Discharge extends BatteryPolicy {}
+    one sig Disable extends BatteryPolicy {}
+    one sig Recharge extends BatteryPolicy {}
+    one sig Mantain extends BatteryPolicy {}
+
+
+    abstract sig SocketType {}
+    one sig Rapid extends SocketType {}
+    one sig Fast extends SocketType {}
+    one sig Slow extends SocketType {}
+
+
+    
+
+    sig StationBattery{
+        stationid: one Int,
+        capacity: one Int,
+        level: one Int
+    }
+
+
+    sig Socket{
+        id: one Int,
+        stationid: one Int,
+        type: one SocketType,
+        cost: one Int,
+        isOccupied: one Bool,
+        specialOffer: one Bool,
+        percentageOffer: one Int
+
+    }
+    
+    sig ElectricVehicle{
+        batterypercentage: one Int,
+        licenceplate: one String
+    }
+
+    abstract sig AccountRegistration {
+    username: one Username,
+    password: one Password,
+    email: one Email
+    }
 
     sig Email {}
-    sig Customer{
-	    username: one String
-	    email: one Email
-	    password: one String
-	    birthday: one String
+
+    sig Username{}
+
+    sig Password{}
+    { //each password is associated to a registration (some registration may have the same password)
+        all p: Password | (some r: AccountRegistration | r.password = p)
+    }
+
+    sig Customer extends AccountRegistration{
+	    electricvehicle: some ElectricVehicle,
+	    birthday: one String,
 	    isActive: one Bool
     }
 
-    sig CPO {
-	    name: one String
-	    username: one String
-	    password: one String
+    sig CPO extends AccountRegistration{
+	    name: one Name
+	    
     }
+
+    sig GPSPosition {}
+    sig Name{}
 
     //We use a simplified model of a time
     sig Time {
 	    time: one Int
     }{time >= 0}
 
-    sig Booking {
-	    startTime: one Time
+    abstract sig BookingAbstract {
+        customerusername: one Username,
+	    startTime: one Time,
 	    endTime: one Time
     }
+
+    sig ChargingStation{
+        id: int Int,
+        batterypolicy: one BatteryPolicy
+    }
+
+
     
     
+    sig Booking extends BookingAbstract {
+	    id: one Int
+    }
     
+    sig SuggestionBooking extends BookingAbstract {}
    
     
     -----------------------------------------------------------------
     
     // Facts
     
-    fact{ 
+    fact{ //a unique username is associated to each registration
+	no disj r1, r2: AccountRegistration | r1.username = r2.username
+    }
+
+    fact{ //a unique email address is associated to each registration
+	no disj r1, r2: AccountRegistration | r1.email = r2.email
+    }
+
+    fact { //The CPO name must be unique
+	no disj c1, c2: CPO | c1.name = c2.name
     }
     
+
+    //each socket in the same charging station has a different id
     
     ------------------------------------------------------------
     //assertions
@@ -59,7 +135,20 @@
     ------------------------------------------------------------
     //predicates
     
-    
+    // simulation  that  shows  the  result  some registrations
+    pred world1 {
+	    #Customer = 2
+	    #Password > 1
+	
+    }
+    run world1 for 6
+
+    pred world2 {
+	    #CPO = 2
+	    #Password > 1
+	
+    }
+    run world2 for 6
     
    
     
