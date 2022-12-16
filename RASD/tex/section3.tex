@@ -189,10 +189,103 @@ The system interacts with users to receive booking requests or to send informati
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 
 
-
-
 \subsubsection{Requirements}
-%TODO write requirements and map them with goals and domain assumptions
+\begin{enumerate}[label=\textbf{-G\arabic*}:]
+    \item {Allow customers to obtain information about nearby charging stations
+          \begin{itemize}
+              \item \textbf{R1:} The system allows customers to view nearby station.
+              \item \textbf{R2:} The system allows customer to select a charging station to view its information.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+          \end{itemize}
+          }
+    \item {Allow customers to book a charge for a certain timeframe
+          \begin{itemize}
+              \item \textbf{R1:} The system allows customers to view nearby station.  
+              \item\textbf{R2:} The system allows customers to select a charging station to view its information.
+              \item \textbf{R3:} The system shows available socket for each charging station.
+              \item \textbf{R4:} The system allows customer to book an available socket in a charging station.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+                            
+          \end{itemize}
+          }
+    \item {Allow customers to start the charge and show predicted charging time
+          \begin{itemize}
+              \item \textbf{R5:} The system allows customers to view personal bookings.
+              \item \textbf{R6:} The system allows customers to select a specific booking.
+              \item \textbf{R7:} The system allows to start a charge for a booking when the vehicle is connected and ready to charge.
+              \item \textbf{R8:} The system shows to the user the predicted charging time when the charge is started.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D9:} The vehicle start charging only when it is connected to the booked socket.
+              \item \textbf{D10:} The socket notifies the CPMS when a vehicle is attached and ready to charge.
+              \item \textbf{D15:} All the sockets present in charging stations feature a system that can retrieve the charging level of a car after it has been connected to the socket.
+          \end{itemize}
+          }
+    \item {Allow customers to know when the charging has finished
+          \begin{itemize}
+              \item \textbf{R9:} The system show the binary charging state (in charge/finished).
+              \item \textbf{R10:} The system recommends alternative day/time slots or store/chains to a user.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D16:} The socket notifies the CPMS when a vehicle has finished to charge.
+          \end{itemize}
+          }
+    \item {Allow customers to pay for the charging service
+          \begin{itemize}
+              \item \textbf{R5:} The system allows customers to view personal bookings.
+              \item \textbf{R6:} The system allows customers to select a specific booking.
+              \item \textbf{R11:} The system allows customers to pay a booked charge.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D8:} A fully functioning payment system is present and returns if a transaction has been successful or not.
+              
+          \end{itemize}
+          }
+    
+          \item {Allow customers to receive suggestions on where to charge
+          \begin{itemize}
+              \item \textbf{R12:} The system periodically searches possible nearby station to charge based on the customer car's battery SoC (<50\%), customer's location, customer's calendar.
+              \item \textbf{R13:} The system sends a push notification if a possible nearby station is found and no suggestions were sent in the previous 1h.
+              \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g. iOS, Android), and also a reliable Internet connection with that device.
+              \item \textbf{D3:} The customer's mobile device fully supports the push notification technology.
+              \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
+              \item \textbf{D6:} The data automatically obtained by the system in order to send suggestions to the customer is accurate and truthful.
+              \item \textbf{D14:} Given a license plate number and personal identification, it exists an API that provides the battery level of the vehicle associated with the license plate.
+              
+          \end{itemize}
+          }
+
+
+          \item {Allow Charging Point Operators to decide the energy acquisition options
+          \begin{itemize}
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g. Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
+              \item \textbf{D11:}Every CPO is supplied with login credentials when the system is installed.
+              \item \textbf{D8:}
+              \item \textbf{D8:} 
+              
+          \end{itemize}
+          }
+
+
+          \item {Allow Charging Point Operators to dynamically choose the charging cost and to set offers
+          \begin{itemize}
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{R:} 
+              \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g. Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
+              \item \textbf{D11:} Every CPO is supplied with login credentials when the system is installed.
+              \item \textbf{D8:}
+              \item \textbf{D8:}
+              \item \textbf{D8:} 
+              
+          \end{itemize}
+          }
+\end{enumerate}
+
 \subsubsection{Traceability Matrix}
 %TODO mapping between requirements and use cases
 \subsection{Performance Requirements}
@@ -210,7 +303,7 @@ Finally, the system should be able to handle many concurrent users, at least
 \subsubsection{Standards Compliance}
 
 The system must be compliant to the GDPR law, as it will mainly used in EU. \newline
-Secure connections must be used for data comunicaction. \newline
+Secure connections must be used for data communication. \newline
 Customers must accept and read the privacy policy during the sign-up phase. \newline
 
 \subsubsection{Hardware Limitations}
