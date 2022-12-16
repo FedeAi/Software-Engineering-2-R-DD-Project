@@ -3,14 +3,14 @@
 \subsubsection{User Interfaces}
 The user interface of eMall is a mobile application, with an easy to use design.
 It should be available on every major mobile operating system.
+On the other hand, the interface of the CPMS subsystem is a web application with a dashboard with all the available features.
+It should be available on every major web browser.
 \subsubsection{Hardware Interfaces}
-The system is fully operated on the Internet, so it doesn't feature any hardware interface, apart from the mobile device needed to access the service.
+The system is fully operated on the Internet, so it doesn't feature any hardware interface, apart from the device needed to access the service.
 %\subsubsection{Software Interfaces}
 \subsubsection{Communication Interfaces}
-The main communication interfaces of the platform are the users and CPMSs.
-The system interacts with users to receive booking requests or to send information, and to CPMSs to receive information about charging stations or to remotely interact with the charging socket.
-A different interface is when the system sends push notifications to a user or retrieves the users' location, charging status and schedule.
-%%% ==> CPMS
+The main communication interfaces of the platform are the users and CPOs.
+The system interacts with users to receive booking requests or to send information, and to CPOs to let them select different charging station options.
 %%%
 \subsection{Functional Requirements}
 
@@ -58,7 +58,12 @@ A different interface is when the system sends push notifications to a user or r
     \\
     \hline
 
-    Input            & email to use for the registration \\ \hline
+    Input            & \begin{itemize}
+        \item username
+        \item email
+        \item password
+        \item birthdate
+    \end{itemize} \\ \hline
     Events flow      & \begin{itemize}[nosep,after=\strut]
         \item The application displays the Sign In screen
         \item Unregistered Customer clicks on "Sign Up"
@@ -76,9 +81,9 @@ A different interface is when the system sends push notifications to a user or r
     \end{itemize} \\
     \hline
     \hline
-    Exception 1      & Customer insert an e-mail which is already stored in the database. So, after the inserts his data and clicks on confirm, the application displays an error page which tells the Customer is already registered to the service and invites him to login with that e-mail. \\
+    Exception 1      & Customer inserts an e-mail which is already stored in the database. So, after he inserts his data and clicks on confirm, the application displays an error page which tells him that he is already registered to the service and invites him to login with that e-mail. \\
     \hline
-    Exception 2      & Customer inserts an invalid e-mail. So, after the Customer clicks on confirm button, the application displays the same page and an error message, which suggests to the Customer to check the e-mail inserted or to change it. \\
+    Exception 2      & Customer inserts an invalid e-mail. So, after the Customer clicks on the confirm button, the application displays the same page and an error message, which suggests to the Customer to check the e-mail inserted or to change it. \\
     \hline
     \caption{Sign Up Customer} \\
 \end{longtable}
@@ -106,7 +111,7 @@ A different interface is when the system sends push notifications to a user or r
     Exit condition   & User is logged in \\
     \hline
     \hline
-    Exception 1      & Customer inserts wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
+    Exception 1      & Customer inserts a wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
     \hline
     \caption{Login Customer} \\
 \end{longtable}
@@ -123,8 +128,8 @@ A different interface is when the system sends push notifications to a user or r
     Events flow      & \begin{itemize}[nosep,after=\strut]
         \item The application displays the home page, which is a map with all the nearby charging stations.
         \item The Customer chooses a charging station.
-        \item The application displays all information about a charging station, including available timeslots.
-        \item The Customer selects an available timeslot for the recharge and clicks the confirm button.
+        \item The application displays all information about a charging station, including its current availability.
+        \item The Customer selects an available station and type of socket for the recharge and clicks the confirm button.
         \item The application displays a confirm popup, with the essential details of the upcoming booking.
         \item Customer clicks the confirm button.
     \end{itemize}\\
@@ -132,14 +137,14 @@ A different interface is when the system sends push notifications to a user or r
     Exit condition   & The application displays a brief summary of the booking, including the unique ID number of the booking.\\
     \hline
     Output           & \begin{itemize}
-        \item   The system has the received the booking.
-        \item   The Customer sees the ticket in his bookings section.
+        \item   The system has the received the booking, and will mark the socket as booked for 15 minutes, and then either the booking is fulfilled by the Customer, or the system will mark the socket as available.
+        \item   The Customer sees the summary in his bookings section, with a reminder that the booking only lasts 15 minutes.
     \end{itemize}\\
     \hline
     \hline
-    Exception 1      &  Customer selects an unavailable timeslot at a charging station. In this case, the application displays an error message stating the situation, and redirects the Customer to the home page. \\
+    Exception 1      &  Customer selects an unavailable charging station. In this case, the application displays an error message stating the situation, with the time for the first socket of the selected type to be available. \\
     \hline
-    Exception 2      & Customer presses on confirm button but it has already got a booking at the same time in his current bookings, which is still valid. In this case, the application displays an error page, and redirects the Customer to the home page.       \\
+    Exception 2      & Customer presses on confirm button, but he has already booked a socket currently. In this case, the application displays an error page, and redirects the Customer to the home page.       \\
     \hline
     \caption{Book a charge}\\
 \end{longtable}
@@ -153,7 +158,7 @@ A different interface is when the system sends push notifications to a user or r
     \hline
     Entry conditions & \begin{itemize}[nosep,after=\strut]
         \item Customer has booked a charge.
-        \item Customer has driven his car to the socket of the said booking at the specified time.
+        \item Customer has driven his car to the socket of the said booking in time.
         \item Customer has opened the application.
     \end{itemize}
         \\
@@ -166,11 +171,11 @@ A different interface is when the system sends push notifications to a user or r
         \item The application displays the brief summary of his booking, and also an "Unlock Socket" button.
         \item Customer clicks the button, and then the application displays a confirmation message. 
         \item The Customer connects his electric vehicle to the socket.
-        \item The application displays an updated version of the summary of the booking with an "Start Charging" button.
+        \item The application displays an updated version of the summary of the booking with a "Start Charging" button.
         \item The Customer clicks the said button.
     \end{itemize}\\
     \hline
-    Exit condition   & The application displays a confirmation message with the estimated time of charge completion or the end of his timeslot, and then redirects the user to the home page.\\
+    Exit condition   & The application displays a confirmation message with the estimated time of charge completion, and then redirects the user to the home page.\\
     \hline
     Output           &  The Customer's vehicle recharges.
     \\

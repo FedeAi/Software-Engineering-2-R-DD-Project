@@ -13,7 +13,14 @@ Customers will have the possibility to see which charging stations are available
 They will also have the opportunity to book a charge at a station at a certain timeframe in advance and to start the charging process remotely.
 They will be notified when the process has finished and the car is fully charged, and they will be able to pay from the application.
 Moreover, the eMall service has a smart system that suggests to the customer the optimal charging solution, based on their schedule, the charging cost and the current state of charge.
-On the other hand Charging Point Operators will be able to select energy options and set special offers.
+On the other hand Charging Point Operators will be able to select energy options and set special offers.\\
+The eMall platform will be composed of two modules, and thus the whole system will be developed modularly:
+\begin{itemize}
+        \item \textbf{Module 1: e-Mobility Service Provider subsystem:} 
+        \\This part of the system will handle all the features regarding a customer, that will be interacting directly with this subsystem.
+        \item \textbf{Module 2: Charging Point Management System subsystem:} 
+        \\This part of the system will handle all the features regarding a single or multiple charging stations. e-Mobilty Service Providers and  check for socket availability and other various informations. Module 1 will interact with this module in order to check for socket availability and to actually start the charge. The Charging Point Operators will interact with the module to manually configure the stations options.
+\end{itemize}
 \subsubsection{Goals}
 \begin{enumerate}[label=$\bullet$ \textbf{G\arabic*:}]
         \item \textbf{Allow users to obtain information about nearby charging stations}
@@ -24,10 +31,10 @@ On the other hand Charging Point Operators will be able to select energy options
          the estimated time for the first to be free.
         \item \textbf{Allow users to book a charge for a certain timeframe}
         \\
-        The customer can select any available charging station and book the charging for a certain timeslot, if available. 
+        The customer can select any available charging station and book the charging for the next 15 minutes, if available. 
         \item \textbf{Allow users to start the charge}
         \\
-        The customer can remotely start the charge once the electric car has been connected to the station's socket.
+        The customer can remotely start the charge once the electric car has been connected to the station's socket, that must be manually unlocked from the service.
         \item \textbf{Allow the users to know when the charging has finished}
         \\
         The customer will be notified by the application when the charging of his vehicle has been completed.
@@ -36,17 +43,17 @@ On the other hand Charging Point Operators will be able to select energy options
         The customer has the option to pay directly from the eMall application for the obtained service.
         \item \textbf{Allow the users to receive suggestions on where to charge}
         \\
-        The customer can receive suggestions from eMall on the optimal station to charge, based on his schedule his vehicle's state of charge, the stations' prices and availability.
+        The customer can receive suggestions from eMall on the optimal station to charge, based on his schedule, his vehicle's state of charge and the stations' prices.
         %\item \textbf{Let the system to provide informations about charging stations}
         %\\
         
         \item \textbf{Allow Charging Point Operators to decide the energy acquisition options}
         \\
-        The Charging Point Operator will have the possibility to choose wheter to aquire energy automatically or to acquire it manually from a specific energy provider.
-        An other option will be to storage the energy into the batteries if they are presents.
-        \item \textbf{Allow Charging Point Operators to dinamically choose the charging cost and to set offers}
+        The Charging Point Operator will have the possibility to choose whether to acquire energy automatically or to acquire it manually from a specific energy provider.
+        Another option will be to store or use the energy from the batteries if they are present.
+        \item \textbf{Allow Charging Point Operators to dynamically choose the charging cost and to set offers}
         \\
-        The Charging Point Operator will have the possibility to select the charging cost price based on the energy providers prices. They will also can set special offers based on the energy providers prices
+        The Charging Point Operator will have the possibility to select the charging cost price based on the energy providers prices. They will also be able to set special offers based on the energy providers prices.
 \end{enumerate}
 
 \subsection{Scope}
@@ -60,7 +67,7 @@ including the reference to which part controls the phenomena.
         \begin{tabular}{|c|c|c|}
         \hline
         \textbf{Phenomenon}                                        & \textbf{Controller} & \textbf{Shared} \\ \hline
-        Customer charges his vehicle at charging stations  & W          & N      \\ \hline
+        Customer charges his vehicle at a charging station  & W          & N      \\ \hline
         Customer books a charge at a charging station         & W          & Y      \\ \hline
         Customer connects the vehicle at the charging station              & W          & N      \\ \hline
         Customer receives QR code for his booking      & M          & Y      \\ \hline
