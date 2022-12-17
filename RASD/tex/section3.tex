@@ -217,7 +217,70 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Pay for the Charging Service}\\
 \end{longtable}
-%%
+%% SUGGESTION FUNCTION
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 6\\
+    \hline
+    Name     & View Suggestions \\
+    \hline
+    Actor            & Customer\\
+    \hline
+    Entry conditions & \begin{itemize}[nosep,after=\strut]
+        \item Customer has logged in.
+        \item Customer has received a push notification about the availability of a suggestion.
+    \end{itemize}
+        \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The application displays a summary of the suggestion with all the information about the booking to make.
+        \item The Customer selects the "Accept" option.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a brief summary of the booking, including the unique ID number of the booking.\\
+    \hline
+    Output           & \begin{itemize}
+        \item   The system has the received the booking, and will mark the socket as booked for 15 minutes, and then either the booking is fulfilled by the Customer, or the system will mark the socket as available.
+        \item   The Customer sees the summary in his bookings section, with a reminder that the booking only lasts 15 minutes.
+    \end{itemize}
+    \\
+    \hline
+    \hline
+    Exception 1      &  Customer logs in after some time since the notification. The system will check if his current position is close enough to the suggestion and if the type of socket of the suggestion is still available at the station.
+    If it is not available, the system won't show the suggestion and the user will be directed to the home page.\\
+    \hline
+    Exception 2      &  The user selects the "Decline" option. The system will cancel the suggestion and redirect the user to the home page.\\
+    \hline
+    \caption{View Suggestions}\\
+\end{longtable}
+
+%%%CPO USECASES
+
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 7\\
+    \hline
+    Name     & CPO Login \\
+    \hline
+    Actor            & CPO\\
+    \hline 
+    Entry conditions & CPO has opened the web portal of his CPMS subsystem.
+        \\
+    \hline
+    Input & The CPO credentials associated with a valid registration.
+    \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The website displays the Login screen.
+        \item The CPO inputs the credentials.
+        \item The system checks for the correctness of the credentials.
+        \end{itemize} \\
+    \hline
+    Exit condition   & CPO is logged in.
+    \\
+    \hline
+    Exception 1      & CPO inserts a wrong combination of credentials and presses Login button. In this case, the system detects the error and the application displays the Login page with an error. \\
+    \hline
+    \caption{CPO Login}\\
+\end{longtable}
 \subsubsection{Sequence diagrams}
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 
@@ -336,7 +399,7 @@ Finally, the system should be able to handle many concurrent users, at least
 \subsubsection{Standards Compliance}
 
 The system must be compliant to the GDPR law, as it will mainly used in EU. \newline
-Secure connections must be used for data communication. \newline
+Secure connections must be used for data comunicaction. \newline
 Customers must accept and read the privacy policy during the sign-up phase. \newline
 
 \subsubsection{Hardware Limitations}
