@@ -254,7 +254,7 @@ The system interacts with users to receive booking requests or to send informati
 \end{longtable}
 
 %%%CPO USECASES
-
+%CPO LOGIN
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 7\\
     \hline
@@ -284,7 +284,142 @@ The system interacts with users to receive booking requests or to send informati
 \subsubsection{Sequence diagrams}
 This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 
-
+%%CPO ENERGY PROVIDER SELECT
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 8\\
+    \hline
+    Name     & Select a DSO option \\
+    \hline
+    Actor            & CPO\\
+    \hline
+    Entry conditions & CPO has logged in \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The web portal displays the home page, which is a list with all the charging station that are owned by the current CPO.
+        \item The CPO chooses a charging station.
+        \item The portal displays the dashboard of the previously selected station, that features information about a charging station, including its current price, special offers, battery level (if present) and battery policy, with options to change them.
+        \item The CPO clicks on the "Update provider" button.
+        \item The application displays a popup with all the available DSOs and another option to select the DSO automatically.
+        \item The CPO picks his preferred option.
+        \item CPO clicks the "Confirm" button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a confirmation popup, and after the CPO closes it, he is redirected to the view of the updated dashboard of his previously selected station.\\
+    \hline
+    Output           & The system has the received the change in the DSO acquirement process, and the station will acquire the energy from the selected DSO. If the "Auto" option is selected, the system will automatically pick the cheapest DSO.
+    \\
+    \hline
+    \hline
+    Exception 1      &  While updating the provider, the CPO clicks on the "Discard" button. He returns to the dashboard and no change is made. \\
+    \hline
+    \caption{Select a DSO option}\\
+\end{longtable}
+%%CPO CHOOSE STATION PRICE
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 9\\
+    \hline
+    Name     & Change station energy price \\
+    \hline
+    Actor            & CPO\\
+    \hline
+    Entry conditions & CPO has logged in \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The web portal displays the home page, which is a list with all the charging station that are owned by the current CPO.
+        \item The CPO chooses a charging station.
+        \item The portal displays the dashboard of the previously selected station, that features information about a charging station, including its current price, special offers, battery level (if present) and battery policy, with options to change them.
+        \item The CPO clicks on the "Update price" button.
+        \item The application displays a popup where the user can input the desired price in €/kWh.
+        \item CPO clicks the "Confirm" button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a confirmation popup, and after the CPO closes it, he is redirected to the view of the updated dashboard of his previously selected station.\\
+    \hline
+    Output           & The system has updated the station price with the new value. 
+    \\
+    \hline
+    \hline
+    Exception 1      &  While updating the price, the CPO clicks on the "Discard" button. He returns to the dashboard and no change is made. \\
+    \hline
+    Exception 2     & If the user inputs an invalid price (such as negative or zero) and clicks the "Submit" button the portal will show an error message, and then he will be returned to the dashboard.
+    \\
+    \hline
+    \caption{Change station energy price}\\
+\end{longtable}
+%%CPO SET SPECIAL OFFER
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 10\\
+    \hline
+    Name     & Set special offer \\
+    \hline
+    Actor            & CPO\\
+    \hline
+    Entry conditions & CPO has logged in \\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The web portal displays the home page, which is a list with all the charging station that are owned by the current CPO.
+        \item The CPO chooses a charging station.
+        \item The portal displays the dashboard of the previously selected station, that features information about a charging station, including its current price, special offers, battery level (if present) and battery policy, with options to change them.
+        \item The CPO clicks on the "Set special offer" button.
+        \item The application displays a popup where the user can input the desired discount in percentage with respect to the current station price, or set the discount to 0\% (Offer deactivated).
+        \item CPO clicks the "Confirm" button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a confirmation popup, and after the CPO closes it, he is redirected to the view of the updated dashboard of his previously selected station.\\
+    \hline
+    Output           & The system has updated the station price with the new value. 
+    \\
+    \hline
+    \hline
+    Exception 1      &  While updating the discount factor, the CPO clicks on the "Discard" button. He returns to the dashboard and no change is made. \\
+    \hline
+    Exception 2     & If the user inputs an invalid factor (such as negative or with characters) and clicks the "Submit" button the portal will show an error message, and then he will be returned to the dashboard.
+    \\
+    \hline
+    \caption{Change station energy price}\\
+\end{longtable}
+%%CPO DECIDE BATTERY POLICY
+\begin{longtable}{|c| p{10cm}|}
+    \hline ID        & 11\\
+    \hline
+    Name     & Decide battery policy \\
+    \hline
+    Actor            & CPO\\
+    \hline
+    Entry conditions & \begin{itemize}[nosep,after=\strut]
+        \item CPO has logged in
+        \item The station has a battery
+    \end{itemize}\\
+    \hline
+    Events flow      & \begin{itemize}[nosep,after=\strut]
+        \item The web portal displays the home page, which is a list with all the charging station that are owned by the current CPO.
+        \item The CPO chooses a charging station.
+        \item The portal displays the dashboard of the previously selected station, that features information about a charging station, including its current price, special offers, battery level (if present) and battery policy, with options to change them.
+        \item The CPO clicks on the "Set Battery Policy" button (only present if station has a battery).
+        \item{The application displays a popup where the user can select his desired battery policy. The available policies are: \begin{itemize}
+        \item Maintain: the battery will stay at its current charge level.
+        \item Charge: the battery will charge up to 100\%. 
+        \item Discharge: the battery will be discharged to 0\%. The CPO can also input the factor of battery energy to mix with the network acquired one.
+        %% CI SERVE? \item Disable: 
+        \end{itemize}
+        }
+        \item CPO clicks the "Confirm" button.
+    \end{itemize}\\
+    \hline
+    Exit condition   & The application displays a confirmation popup, and after the CPO closes it, he is redirected to the view of the updated dashboard of his previously selected station.\\
+    \hline
+    Output           & The system has updated the internal battery management of the station.
+    \\
+    \hline
+    \hline
+    Exception 1      &  While updating the battery policy, the CPO clicks on the "Discard" button. He returns to the dashboard and no change is made. \\
+    \hline
+    Exception 2     & If the user inputs an invalid factor (such as negative or with characters) and clicks the "Submit" button the portal will show an error message, and then he will be returned to the dashboard.
+    \\
+    \hline
+    \caption{Decide battery policy}\\
+\end{longtable}
+%%
 \subsubsection{Requirements}
 \begin{enumerate}[label=\textbf{-G\arabic*}:]
     \item {Allow customers to obtain information about nearby charging stations
