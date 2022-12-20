@@ -41,7 +41,7 @@ The system interacts with users to receive booking requests or to send informati
     \end{figure}
 
 \end{enumerate}
-\subsubsection{Use case tables}
+\subsubsection{Use Case Tables and Sequence Diagrams}
 %%SIGNUP
 \begin{longtable}{ | c | p{10cm} | }
 
@@ -51,10 +51,7 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     Actor            & Unregistered Customer \\
     \hline
-    Entry conditions &
-    \begin{itemize}
-        \item Unregistered Customer has downloaded and opened the application on his smartphone
-    \end{itemize}
+    Entry conditions & Unregistered Customer has downloaded and opened the application on his smartphone
     \\
     \hline
 
@@ -77,7 +74,7 @@ The system interacts with users to receive booking requests or to send informati
     Exit conditions  & Customer registration has been successful: user data are stored in the database of the system. Customer can now Login with his credentials. \\ \hline
     Output           & \begin{itemize}
         \item The email of the Customer is stored in the database of the application
-        \item The Customer receives the email of confirmation
+        \item The Customer receives the confirmation email
     \end{itemize} \\
     \hline
     \hline
@@ -87,6 +84,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Sign Up Customer} \\
 \end{longtable}
+%% SIGNUP SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/sign-up.png}
+        \caption{Sign Up Customer}
+    \end{center}
+\end{figure}
 %%LOGIN
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 2 \\
@@ -115,6 +119,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Login Customer} \\
 \end{longtable}
+%% LOGIN CUST SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/login-cust.png}
+        \caption{Login Customer}
+    \end{center}
+\end{figure}
 %%BOOK A CHARGE
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 3\\
@@ -148,6 +159,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Book a charge}\\
 \end{longtable}
+%% BOOK CHARGE SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/book.png}
+        \caption{Book a charge}
+    \end{center}
+\end{figure}
 %%REMOTELYSTART
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 4\\
@@ -184,6 +202,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Remotely start a charge}\\
 \end{longtable}
+%% START CHARGE SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/start.png}
+        \caption{Remotely start a charge}
+    \end{center}
+\end{figure}
 %% PAY FUNCTION
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 5\\
@@ -217,6 +242,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{Pay for the Charging Service}\\
 \end{longtable}
+%% PAY CHARGE SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/pay.png}
+        \caption{Pay for the Charging Service}
+    \end{center}
+\end{figure}
 %% SUGGESTION FUNCTION
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 6\\
@@ -252,6 +284,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{View Suggestions}\\
 \end{longtable}
+%% VIEW SUGG SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/suggest.png}
+        \caption{View Suggestions}
+    \end{center}
+\end{figure}
 
 %%%CPO USECASES
 %CPO LOGIN
@@ -281,8 +320,13 @@ The system interacts with users to receive booking requests or to send informati
     \hline
     \caption{CPO Login}\\
 \end{longtable}
-\subsubsection{Sequence diagrams}
-This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
+%% VIEW SUGG SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/login-cpo.png}
+        \caption{CPO Login}
+    \end{center}
+\end{figure}
 
 %%CPO ENERGY PROVIDER SELECT
 \begin{longtable}{|c| p{10cm}|}
@@ -314,6 +358,13 @@ This section shows all sequence diagrams related to the use cases. In all cases 
     \hline
     \caption{Select a DSO option}\\
 \end{longtable}
+%% DSO PICK SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/dso.png}
+        \caption{Select a DSO option}
+    \end{center}
+\end{figure}
 %%CPO CHOOSE STATION PRICE
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 9\\
@@ -346,11 +397,18 @@ This section shows all sequence diagrams related to the use cases. In all cases 
     \hline
     \caption{Change station energy price}\\
 \end{longtable}
+%% PICK ENERGY PRICE SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/energy-price.png}
+        \caption{Change station energy price}
+    \end{center}
+\end{figure}
 %%CPO SET SPECIAL OFFER
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 10\\
     \hline
-    Name     & Set special offer \\
+    Name     & Set special offers\\
     \hline
     Actor            & CPO\\
     \hline
@@ -376,8 +434,15 @@ This section shows all sequence diagrams related to the use cases. In all cases 
     Exception 2     & If the user inputs an invalid factor (such as negative or with characters) and clicks the "Submit" button the portal will show an error message, and then he will be returned to the dashboard.
     \\
     \hline
-    \caption{Change station energy price}\\
+    \caption{Set special offers}\\
 \end{longtable}
+%% SPECIAL OFFERS SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/special.png}
+        \caption{Set special offers}
+    \end{center}
+\end{figure}
 %%CPO DECIDE BATTERY POLICY
 \begin{longtable}{|c| p{10cm}|}
     \hline ID        & 11\\
@@ -419,7 +484,16 @@ This section shows all sequence diagrams related to the use cases. In all cases 
     \hline
     \caption{Decide battery policy}\\
 \end{longtable}
+%% BATTERY POLICY SEQDIAG
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/sequence/battery.png}
+        \caption{Decide battery policy}
+    \end{center}
+\end{figure}
 %%
+%%\subsubsection{Sequence diagrams}
+%%This section shows all sequence diagrams related to the use cases. In all cases we consider that the actor has already logged in, except in the diagrams representing the registration and the login in operations.
 \subsubsection{Requirements}
 \begin{enumerate}[label=\textbf{-G\arabic*}:]
     \item {Allow customers to obtain information about nearby charging stations
