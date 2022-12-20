@@ -2,3 +2,8 @@
 /RASD/out/
 /DD/out/
 *.aux
+*.fls
+*.log
+*.toc
+*.gz
+*.fdb_latexmk
