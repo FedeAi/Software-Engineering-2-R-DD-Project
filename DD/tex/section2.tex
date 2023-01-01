@@ -70,5 +70,51 @@ The tiers in the image are the following:
 \subsection{Runtime view}
 \subsection{Component interface}
 \subsection{Selected architectural styles and patterns}
-\subsection{Other design decisions}
 
+\subsubsection{Four-tiered architecture}
+We chose this architecture for many reasons:
+\begin{itemize}
+    \item \textbf{Flexibility:} Once the interfaces of the S2B are defined, then the interior logic is dependent from outside. This fact implicates that each module can be improved without changing all the others.
+    \item \textbf{Scalability:} an application divided on several tiers guarantees that the approach of scaling the architecture is adopted only for the most critical components. The result obtained maximizes the performance but also minimizes the costs.
+    \item \textbf{Load Distribution:} the presence of several application servers, preceded by a load balancer, guarantees an acceptable division of requests. Otherwise, the presence of a single node means that node can become over-requested, sending the entire system down.
+\end{itemize}
+
+\subsubsection{RESTful Architecture}
+\label{REST}
+The restful application will be adopted both on web and mobile side. This architecture is based on the stateless principle, in which the server does not contain any information about the state of client, that is managed directly on client side.
+
+An useful property of this architecture is the \textit{code on demand} one, which permits sending some code snippets from the server to the client, and then make the client executing them locally (usually in the web browser). This behavior guarantees less computational load on the server and also a dynamic attitude of the service.
+
+The application is then intended to be developed through \textit{client side scripting}, which means that all requests and update of the page are made on client side. This behavior also improves the user experience, and prevent refreshing the page each time an action is made.
+
+\subsubsection{Model View Controller (MVC)}
+Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
+
+These three components are:
+\begin{itemize}
+    \item \textbf{Model:} the central component of the pattern. It is the application's dynamic data structure, independent of the user interface. It directly manages the data, logic and rules of the application.
+    \item \textbf{View:} any representation of information such as a chart, diagram or table. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants.
+    \item \textbf{Controller:} accepts input and converts it to commands for the model or view.
+\end{itemize}
+
+\subsection{Other design decisions}
+\subsubsection{Scale-Out}
+This method consists of cloning the nodes in which we expect to have a bottleneck in order to increase the general system scalability.
+
+This choice leads to a higher deployment effort but also to a lower hardware upgrade cost when the limits are reached. In conclusion, the scale-out is a preferable road.
+
+Once split, the system requires a load balancer in order to correctly redirects the incoming requests to the node with the lowest workload.
+
+\subsubsection{Thin and thick client and fat server}
+The thin client will be the web application.\\
+This architecture consists of keeping as low information as possible on client side. It means that the business logic resides only on server side.\\
+The minimum requirement of this choice is a stable connection between the parts; otherwise the application would not work as expected.\\
+Of course, the main advantage of choosing this implementation style is that the client machine is not required to have an high computational power.
+
+Instead, in the case of mobile application, the best choice is to save useful information on a local database, in order to avoid continuous requests to the server (less computational load) and also to keep information even when the Internet connection is not available. 
+In this second case it is said to be a thick client.
+
+\subsubsection{Adoption of IdP Providers}
+We decided to adopt some external IdP providers (such as Facebook, Google, etc.) in order to simplify the process of user registration, without asking him any additional information.
+
+This service is based on the providers API, which will communicate with our service in order to provide the necessary information (such as an email address).
