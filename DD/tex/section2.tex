@@ -9,12 +9,12 @@
 
 As figure \ref{client_server_par} represents, the system is a distributed application which follows the common known client-server paradigm.
 
-In particular, there are two different types of client, which makes it either thin and fat at the same time.
+In particular, there are two different types of client-server interactions, because the product has 2 modules that need to fulfill different goals for different actors. 
 
-The first one is a \textit{Web Browser}, which is by definition a thin client, because of its total dependency from the server.
+Since Module 1 will feature a mobile application, that will contain an internal database in order to make it less dependent from the server. This aspect makes it a more of a thick client.
+
+Module 2, on the other hand, will feature a \textit{Web Application}, which is by definition a thin client, because of its total dependency from the server.
 This type of client does not contain the application business logic, but only the presentation layer.
-
-The second one, instead, is a mobile application, which contains an internal database in order to make it less dependent from the server. This aspect makes it a more thick client.
 
 In both cases the server is \textit{fat} and contains all the data management and business logic.
 
@@ -27,7 +27,7 @@ In this section the architecture will be described in an easy way, justifying al
     \end{center}
 \end{figure}
 
-In figure\ref{three_tier_desc} the three S2B layers are shown, which respectively are:
+In figure \ref{three_tier_desc} the three S2B layers are shown, which respectively are:
 \begin{itemize}
     \item \textbf{Presentation Layer:} it manages the presentation logic and, consequently, all the interactions with the end user. This is also called \textit{rendering layer}.
     \item \textbf{Application (Logic) Layer:} it manages the business functions that the S2B must provide.
@@ -88,7 +88,7 @@ An useful property of this architecture is the \textit{code on demand} one, whic
 The application is then intended to be developed through \textit{client side scripting}, which means that all requests and update of the page are made on client side. This behavior also improves the user experience, and prevent refreshing the page each time an action is made.
 
 \subsubsection{Model View Controller (MVC)}
-Model–view–controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
+Model--View--Controller (usually known as MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
 
 These three components are:
 \begin{itemize}
