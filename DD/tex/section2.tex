@@ -45,6 +45,49 @@ The application described in this document is composed by four tiers.
 
 
 \subsection{Component view}
+
+In this section there is an high-level analysis of the main components and their subcomponents. Main interfaces interactions between components are also provided.
+
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/ComponentDiagram.PNG}
+        \caption{Component Diagram}\label{component_diagram}
+    \end{center}
+\end{figure}
+
+
+
+
+
+\begin{itemize}
+    \item \textbf{Client Customer Manager}\\This module handles all the requests made by the client. At the beginning, when the client is not logged in, the module offers (through the customer manager) a LoginInterface which permits to execute a sign up or sign in operation. Once the client has logged in, the module shows only the CustomerInterface which the customer will exploit.
+    \item \textbf{Email Manager}\\This component handles the email notifications, such as the sign up and forgot password ones.
+    \item \textbf{Customer Manager}\\This module contains all the features in order to manage the customer side. In fact, it includes the log in and sign up manager.
+    
+    \item \textbf{Suggestion Manager}\\This module manages the push notifications. Based on the information aquired thanks to the Vehicle Manager, it creates suggested bookings and shows all the details about them. It allows also to confirm a suggested booking on the application.
+    \item \textbf{Charging Manager}\\ This module manages the charging process operations, such as the socket unlocking. It also shows the remaining time to end a charge and the charging state (in charge/ finished).
+    \item \textbf{Booking Manager}\\This component manages the booking process. It aims to handle the sockets' booking and shows the details of the different bookings.
+    \item \textbf{InfoStation Handler}\\This component handles the information about the charging stations. So it shows information about sockets types and related prices and special offers, sockets availabity and specifications about the charging stations.
+    \item \textbf{Payment Manager}\\This component's aim is to handle the customer payment. It uses a PaymentAPI in order to process the task.
+    \item \textbf{Vehicle Manager}\\This component's aim is to get the customer's vehicle information, such as the position, the battery percentage and the calendar.
+    \item \textbf{Client CPO Manager}\\This module handles all the requests made by the client. At the beginning, when the client is not logged in, the module offers (through the CPO manager) a LoginInterface which permits to execute a sign in operation. Once the client has logged in, the module shows only the CPOInterface which the CPO will exploit.
+    \item \textbf{Energy Manager}\\This module's aim is to handle the energy options.
+    It also allows to select a DSO and aquire energy from it. On the other hand allows to set some operations such as the auto-mode.
+    \item \textbf{CPO Manager}\\This module contains all the features in order to manage the user side. It includes the log in manager.
+    \item \textbf{Price Manager}\\This module in needed to set special offers on socket's types in selected charging stations. Moreover it is used to set socket prices.
+   
+    \item \textbf{Battery Manager}\\This component manages the battery in the charging stations. It handles the battery policy change.
+    \item \textbf{StationInfo Handler}\\This component handles the information about the charging stations. So it shows information about sockets types and related prices and special offers, sockets availabity and specifications about the charging stations.
+ 
+    \item \textbf{Security Manager}\\Finally, this components handles all the security issues of the S2B. In fact, its aim is to authenticate and authorize requests, relying on the token provided from the client (since it should be a REST application). If a request is not authenticated, it takes the user to a login page; otherwise it simply replies with an unauthorized state message.
+\end{itemize}
+
+
+
+
+
+
 \subsection{Deployment view}
 
 \begin{figure}[H]
