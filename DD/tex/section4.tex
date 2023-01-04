@@ -1,1 +1,118 @@
 \section{Requirements traceability}
+This section will shown the traceability between requirements and modules described in component diagram.
+
+\begin{itemize}
+    \item \textbf{R1:} The system allows users to sign-up.
+          \begin{itemize}
+              \item \textbf{Customer Manager}: in order to sign up.
+              \item \textbf{Email Manager}:  in order to sign up.  
+          \end{itemize}
+    \item \textbf{R2:} The system allows customers to log-in.
+          \begin{itemize}
+              \item \textbf{Customer Manager}:  in order to sign in.   
+              \item \textbf{Email Manager}:  in order to deal with forgot passwords.             
+          \end{itemize}
+    \item \textbf{R3:} The system allows customers to view nearby station.
+          \begin{itemize}
+              \item \textbf{InfoStation Handler}: it simply returns all stations nearby.
+          \end{itemize}
+
+    \item \textbf{R4:} The system allows customer to select a charging station to view its information.
+          \begin{itemize}
+              \item \textbf{InfoStation Handler}
+          \end{itemize}
+
+    \item \textbf{R5:} The system shows available socket for each charging station.
+          \begin{itemize}
+              \item \textbf{InfoStation Manager}
+          \end{itemize}
+    \item \textbf{R6:} The system allows customer to book an available socket in a charging station.
+          \begin{itemize}
+              \item \textbf{Booking Manager}: in order to make a booking
+              
+          \end{itemize}
+    \item \textbf{R7:} The system allows customers to view personal bookings.
+          \begin{itemize}
+              \item \textbf{Booking Manager}
+          \end{itemize}
+    \item \textbf{R8:} The system allows customers to select a specific booking.
+          \begin{itemize}
+              \item \textbf{Booking Manager}
+          \end{itemize}
+    \item \textbf{R9:} The system allows to start a charge for a booking when the vehicle is connected and ready to charge.
+          \begin{itemize}
+              \item \textbf{Charging Manager}
+              
+          \end{itemize}
+
+
+    \item \textbf{R10:} The system shows to the user the predicted charging time when the charge is started.
+          \begin{itemize}
+              \item \textbf{Charging Manager}: this module display the time left to end the charge
+          \end{itemize}
+    \item \textbf{R11:} The system show the binary charging state (in charge/finished).
+          \begin{itemize}
+              \item \textbf{Charging Manager}
+          \end{itemize}
+
+
+          
+          \item \textbf{R12:} The system allows customers to pay a booked charge.
+          \begin{itemize}
+              \item \textbf{Payment Manager}
+              
+          \end{itemize}
+          \item \textbf{R13:} The system periodically searches possible nearby station to charge based on the customer car's battery SoC (<50\%), customer's location, customer's calendar.
+          \begin{itemize}
+              \item \textbf{Suggestion Manager}: in order to create possible notifications.
+              \item \textbf{Vehicle Manager}: in order to retrieve vehicle's informations.
+          \end{itemize}
+          \item \textbf{R14:} The system sends a push notification if a possible nearby station is found and no suggestions were sent in the previous 1h.
+          \begin{itemize}
+            \item \textbf{Suggestion Manager}: in order to create possible notifications.
+              \item \textbf{StationInfo Handler}: in order to retrieve informations about nearby stations to display in the notification.
+          \end{itemize}
+          \item \textbf{R15:} The system allows CPO to log-in.
+          \begin{itemize}
+              \item \textbf{CPO Manager}: in order to sign in.
+              
+          \end{itemize}
+          \item \textbf{R16:} The system allows CPO to view all their the charging stations
+          \begin{itemize}
+              \item \textbf{StationInfo Handler}              
+          \end{itemize}
+          \item \textbf{R17:} The system allows CPO to view information about a single charging station
+          \begin{itemize}
+              \item \textbf{StationInfo Handler}
+              
+          \end{itemize}
+          \item \textbf{R18:} The system allows CPO to select energy acquisition battery policy (auto, charge, discharge) for a selected charging stations, if the station has batteries
+          \begin{itemize}
+              \item \textbf{Battery Manager}: in order to manage batteries e set policies
+              
+          \end{itemize}
+          \item \textbf{R19:} The system allows CPO to select an energy provider (DSO) or set the selection to auto-mode
+          \begin{itemize}
+              \item \textbf{Energy Manager}: select DSO and the energy actions
+              
+          \end{itemize}
+          \item \textbf{R20:} The system allows CPO to set the charging prices for a selected charging station
+          \begin{itemize}
+              \item \textbf{Price Manager}
+          \end{itemize}
+          \item \textbf{R21:} The system allows CPO to set a special offer for a selected charging station and a specific charging type (slow, fast, rapid)
+          \begin{itemize}
+              \item \textbf{Price Manager}
+              
+          \end{itemize}
+\end{itemize}
+
+Also the system attributes are guaranteed by the design choices explained in this document; more precisely:
+\begin{itemize}
+    \item \textbf{Easy usability}: guaranteed through a very simple, minimal and intuitive user interface. Since the main target of the application is the customer-side, the experience is designed to be very simple. In fact, there are only a few buttons with clear and precise functionalities.
+    On the other hand the CPO-side interface is very easy to use and has a user-friendly interface
+    \item \textbf{Reliability and Availability}: accomplished through a replication of the running application in different clones, following the \textit{scale-out} method. The physical nodes of the system would then work in parallel, avoiding system downtimes due to a failure. In fact, when a clone breaks down, there are others in parallel which can supply the requested service, but with some performance issues. The scope is to obtain at least 97\% of availability for each tier (the total system would then have 97\% of availability).
+    \item \textbf{Security}: guaranteed through an encrypted communication between client and server. Connections moves on HTTPS protocol. 
+    \item \textbf{Cross Platform}: firstly obtained through a development of a web interface, which can be accessed from any type of connected device with a browser installed. The mobile application, instead, will be available only for iOS and Android customers and will be downloadable from App Store and Google Play.
+    \item \textbf{Maintainability and Modularity:} the first is accomplished through the second, because the application will be divided in some small parts (called modules) which interacts each other to provide the requested service.
+\end{itemize}
