@@ -547,7 +547,6 @@ This subsection summarizes the goals described in section \ref{goals}, showing t
             \item \textbf{R1:} The system allows users to sign-up.
             \item \textbf{R2:} The system allows customers to log-in.
             \item \textbf{R11:} The system show the binary charging state (in charge/finished).
-            \item \textbf{R12:} The system recommends alternative day/time slots or store/chains to a user.
             \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g.\ iOS, Android), and also a reliable Internet connection with that device.
             \item \textbf{D16:} The socket notifies the CPMS when a vehicle has finished to charge.
           \end{itemize}
@@ -558,7 +557,7 @@ This subsection summarizes the goals described in section \ref{goals}, showing t
             \item \textbf{R2:} The system allows customers to log-in.
             \item \textbf{R7:} The system allows customers to view personal bookings.
             \item \textbf{R8:} The system allows customers to select a specific booking.
-            \item \textbf{R13:} The system allows customers to pay a booked charge.
+            \item \textbf{R12:} The system allows customers to pay a booked charge.
             \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g.\ iOS, Android), and also a reliable Internet connection with that device.
             \item \textbf{D8:} A fully functioning payment system is present and returns if a transaction has been successful or not.
               
@@ -569,8 +568,8 @@ This subsection summarizes the goals described in section \ref{goals}, showing t
           \begin{itemize}
             \item \textbf{R1:} The system allows users to sign-up.
             \item \textbf{R2:} The system allows customers to log-in.
-            \item \textbf{R14:} The system periodically searches possible nearby station to charge based on the customer car's battery SoC (<50\%), customer's location, customer's calendar.
-            \item \textbf{R15:} The system sends a push notification if a possible nearby station is found and no suggestions were sent in the previous 1h.
+            \item \textbf{R13:} The system periodically searches possible nearby station to charge based on the customer car's battery SoC (<50\%), customer's location, customer's calendar.
+            \item \textbf{R14:} The system sends a push notification if a possible nearby station is found and no suggestions were sent in the previous 1h.
             \item \textbf{D1:} Each customer who wants to use eMall needs to have a mobile device with the most common mobile OSes (e.g.\ iOS, Android), and also a reliable Internet connection with that device.
             \item \textbf{D3:} The customer's mobile device fully supports the push notification technology.
             \item \textbf{D4:} The customer's schedule and location is accessible by the platform.
@@ -583,11 +582,11 @@ This subsection summarizes the goals described in section \ref{goals}, showing t
 
           \item {Allow Charging Point Operators to decide the energy acquisition options
           \begin{itemize}
-              \item \textbf{R16:} The system allows CPO to log-in.
-              \item \textbf{R17:} The system allows CPO to view all their the charging stations 
-              \item \textbf{R18:} The system allows CPO to view information about a single charging station
-              \item \textbf{R19:} The system allows CPO to select energy acquisition battery policy (auto, charge, discharge) for a selected charging stations, if the station has batteries
-              \item \textbf{R20:} The system allows CPO to select an energy provider (DSO) or set the selection to auto-mode 
+              \item \textbf{R15:} The system allows CPO to log-in.
+              \item \textbf{R16:} The system allows CPO to view all their the charging stations 
+              \item \textbf{R17:} The system allows CPO to view information about a single charging station
+              \item \textbf{R18:} The system allows CPO to select energy acquisition battery policy (auto, charge, discharge) for a selected charging stations, if the station has batteries
+              \item \textbf{R19:} The system allows CPO to select an energy provider (DSO) or set the selection to auto-mode 
               \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g.\ Mozilla Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
               \item \textbf{D11:} Every CPO is supplied with login credentials when the system is installed.              
           \end{itemize}
@@ -599,8 +598,8 @@ This subsection summarizes the goals described in section \ref{goals}, showing t
             \item \textbf{R16:} The system allows CPO to log-in.
             \item \textbf{R17:} The system allows CPO to view all their the charging stations 
             \item \textbf{R18:} The system allows CPO to view information about a single charging station
-            \item \textbf{R21:} The system allows CPO to set the charging prices for a selected charging station
-            \item \textbf{R22:} The system allows CPO to set a special offer for a selected charging station and a specific charging type (slow, fast, rapid)
+            \item \textbf{R20:} The system allows CPO to set the charging prices for a selected charging station
+            \item \textbf{R21:} The system allows CPO to set a special offer for a selected charging station and a specific charging type (slow, fast, rapid)
             \item \textbf{D2:} Each CPO who wants to access the CPMS platform needs to have a device connected to the Internet (such as PC, Mac, smartphone, etc), with the most common Web Browsers (e.g.\ Mozilla Firefox, Google Chrome, Microsoft Edge, Apple Safari, etc).
             \item \textbf{D11:} Every CPO is supplied with login credentials when the system is installed.              
           \end{itemize}
@@ -618,13 +617,13 @@ Mapping between use cases and requirements
     2. Login Customer on the application                        & R1, R2                                                    &  \\ \cline{1-2}
     3. Book a Charge                                            & R1, R2, R3, R4, R5, R6                                    &  \\ \cline{1-2}
     4. Remotely Start a Charge                                  & R1, R2, R7, R8, R9, R10                                   &  \\  \cline{1-2}
-    5. Pay for the Charging Service                             & R1, R2, R7, R8, R13                                       &  \\ \cline{1-2}
-    6. View Suggestions                                         & R1, R2, R14, R15                                          &  \\ \cline{1-2}
-    7. CPO Login                                                & R16                                                       &  \\ \cline{1-2}
-    8. Select a DSO option                                      & R16, R17, R19, R20                                        &  \\ \cline{1-2}
-    9. Change station energy price                              & R16, R17, R18, R21                                        &  \\ \cline{1-2}
-    10. Set special offers                                      & R16, R17, R18, R22                                        &  \\ \cline{1-2}
-    11. Decide battery policy                                   & R16, R17, R18, R19                                        &  \\ \cline{1-2}
+    5. Pay for the Charging Service                             & R1, R2, R7, R8, R12                                       &  \\ \cline{1-2}
+    6. View Suggestions                                         & R1, R2, R13, R14                                          &  \\ \cline{1-2}
+    7. CPO Login                                                & R15                                                       &  \\ \cline{1-2}
+    8. Select a DSO option                                      & R15, R16, R18, R19                                        &  \\ \cline{1-2}
+    9. Change station energy price                              & R15, R16, R17, R20                                        &  \\ \cline{1-2}
+    10. Set special offers                                      & R15, R16, R17, R21                                        &  \\ \cline{1-2}
+    11. Decide battery policy                                   & R15, R16, R17, R18                                        &  \\ \cline{1-2}
 
 
     \end{tabular}
