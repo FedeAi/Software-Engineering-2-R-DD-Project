@@ -165,6 +165,9 @@ When the CPMS system has the automatic DSO feature active, an algorithm to autom
 When the CPMS system has the automatic battery mode active, an algorithm to automatically managed the battery operation mode  (Discharge, Mantain, Recharge) is used. When the battery is in discharge mode, it means that the battery is discharging and the energy is flowing from the battery to the vehicles, when the battery is in mantain mode it is not used. The automatic battery mode uses the policy in figure \ref{battery_policy}. Once activated the automatic mode the battery state is mantain. Every time the battery state of charge (SoC) is less than 20 \% it goes to the recharge state.
 The transition between mantain and discharge states are based on the station socket occupation: if there are many customers (>50 \% of sockets occupied) the battery is set to discharge state, if insted the occupation becomes lower than 40 \% (debouncing factor) the battery is deactivated.
 
+\subsubsection{Send-suggestions - Algorithm}
+The eMSP sends booking suggestions to the customer's mobile-app. Suggestions are based on customer position, car's SoC, calendar. A basic algorithm will send suggestions only when the customer has at least the next 3 hours free, the battery SoC must be under the 60\%. The application will not "spam" noification, so a debouncing time of 2h is set between one suggestion and another. The suggested charging station is simply the nearest to the customer's location.
+
 \begin{center}
     \begin{figure}[H]
         \includegraphics[width=\textwidth]{./img/battery_policy.png}
