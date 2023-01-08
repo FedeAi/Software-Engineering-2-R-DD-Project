@@ -112,8 +112,8 @@ Every interface uses the REST API through HTTP GET or/and POST calls.
 \end{figure}
 The diagram above represents the process of signing up a Customer. There two possible situations:
 \begin{itemize}
-\itemize Customer performs a correct registration process;
-\itemize Customer performs a wrong registration process (such as the account is already registered or the email in not valid).
+    \item Customer performs a correct registration process;
+    \item Customer performs a wrong registration process (such as the account is already registered or the email in not valid).
 \end{itemize}
 The Customer begins by inserting his registration credentials in the app. Afterwards the app sends the request to the ClientCustomerManager through the LoginInterface, accessing later the CustomerManager.\\
 The CustomerManager checks for the correctness of the received information and if correct it passes it ultimately to the DBMS. Then an email is sent to the Customer by the EmailManager. If the CustomerManager checks fail, the user is sent a specific error message related to his issue.
