@@ -59,7 +59,7 @@ In this section there is an high-level analysis of the main components and their
 
 
 
-
+eMSP's components:
 \begin{itemize}
     \item \textbf{Client Customer Manager}\\This module handles all the requests made by the client. At the beginning, when the client is not logged in, the module offers (through the customer manager) a LoginInterface which permits to execute a sign up or sign in operation. Once the client has logged in, the module shows only the CustomerInterface which the customer will exploit.
     \item \textbf{Email Manager}\\This component handles the email notifications, such as the sign up and forgot password ones.
@@ -71,6 +71,11 @@ In this section there is an high-level analysis of the main components and their
     \item \textbf{InfoStation Handler}\\This component handles the information about the charging stations. So it shows information about sockets types and related prices and special offers, sockets availabity and specifications about the charging stations.
     \item \textbf{Payment Manager}\\This component's aim is to handle the customer payment. It uses a PaymentAPI in order to process the task.
     \item \textbf{Vehicle Manager}\\This component's aim is to get the customer's vehicle information, such as the position, the battery percentage and the calendar.
+    \item \textbf{Security Manager}\\Finally, this components handles all the security issues of the S2B. In fact, its aim is to authenticate and authorize requests, relying on the token provided from the client (since it should be a REST application). If a request is not authenticated, it takes the user to a login page; otherwise it simply replies with an unauthorized state message.
+\end{itemize}
+
+CPMS's components:
+\begin{itemize}
     \item \textbf{Client CPO Manager}\\This module handles all the requests made by the client. At the beginning, when the client is not logged in, the module offers (through the CPO manager) a LoginInterface which permits to execute a sign in operation. Once the client has logged in, the module shows only the CPOInterface which the CPO will exploit.
     \item \textbf{Energy Manager}\\This module's aim is to handle the energy options.
     It also allows to select a DSO and aquire energy from it. On the other hand allows to set some operations such as the auto-mode.
@@ -127,6 +132,34 @@ The tiers in the image are the following:
      %   \caption{Component Interface}\label{component_interface2}
  %   \end{center}
 %\end{figure}
+
+eMSP'interfaces description:
+\begin{itemize}
+    \item \textbf{CustomerInterface}: this is the main interface to exchange data between the mobile-application and the eMSP.
+    \item \textbf{LoginInterface}: this interface is used to handle the login, sign-up, and account activation of the customer. It's used to comunicate between the mobile-app and the eMSP.
+    \item \textbf{SecurityController}: eMSP's internal interface, used to manage the authorization of the user operations (operations of the CustomerInterface and LoginInterface). It's used by each component to validate the request token.
+    \item \textbf{VehicleController}: eMSP's internal interface, used to handle the request and data exchanged with the VehicleApi. It offers all the methods related with the user-vehicle.
+    \item \textbf{SuggestionController}: eMSP's internal interface, used to comunicate with the SuggestionHandler, it exposes methods to find candidate suggestions, to accept suggestions.
+    \item \textbf{BookingController}: eMSP's internal interface, used to manage customer's bookings. It exposes methods to create a new booking, get info about a booking, get all booking (olds and current). 
+    \item \textbf{ChargingController}: eMSP's internal interface, used to manage the vehicle charging process. For example the startCharge method is used to start a booked charge.
+    \item \textbf{CustomerController}: eMSP's internal interface, it is linked with the LoginInterface. It is used to internally perform login-signup operations.
+    \item  \textbf{InfoStationController}: eMSP's internal interface, it is used to retrive station informations. The method getStationInfo for example returns all the info about a station: socket availability, charging price
+    \item \textbf{PaymentController}: eMSP's internal interface, it is used to manage the payment phase. The reqPay method is used to send a payment request. The pay method is used to communicate the payment informations and pay.
+\end{itemize}
+
+CPMS'interfaces description:
+\begin{itemize}
+    \item \textbf{CPMSInterface}: this is the main interface to exchange data between the eMSP and the CPMS. It can be retrived a list of stations, or info about a single station. It can be requested to unlock a socket or request a reservation for a booking.
+    \item \textbf{CPOInterface}: this is the main interface to exchange data between the CPMS and the CPO-WebServer. It expose all the functionalities to manage a station, for example to set special offers, set charging price...
+    \item \textbf{CPOLoginInterface}: this is the interface to handle CPO's login. It is an interface between the CPMS and the CPO-WebServer.
+    \item \textbf{EnergyController}: CPMS's internal interface, it is used to manage the DSO providers. To retrive the DSO prices. To set the acquisition of energy to automatic mode.
+    \item \textbf{StationInfoController}: CPMS's internal interface, mainly used to retrive stations' information. It is also used to make a reservation for a socket.
+    \item \textbf{BatteryController}: CPMS's internal interface, it is used to control the station's batteries. It exposes methods to set the battery policy (mantain, charge or discharge), set discharging factor, or retrive information.
+    \item \textbf{PriceController}: CPMS's internal interface, it is used to set and retrive charging prices and to set special offers.
+    \item \textbf{CPOController}: CPMS's internal interface, it is linked with the CPOLoginInterface. It is used to internally perform login operations.
+    \item \textbf{SecurityController}: CPMS's internal interface, used to manage the authorization of the user operations (operations of the CustomerInterface and LoginInterface). It's used by each component to validate the request token.
+    
+\end{itemize}
 
 \subsection{Selected architectural styles and patterns}
 
