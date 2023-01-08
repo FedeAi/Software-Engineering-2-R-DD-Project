@@ -48,7 +48,6 @@ The application described in this document is composed by four tiers.
 
 In this section there is an high-level analysis of the main components and their subcomponents. Main interfaces interactions between components are also provided.
 
-
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/ComponentDiagram.PNG}
@@ -88,11 +87,6 @@ CPMS's components:
     \item \textbf{Security Manager}\\Finally, this components handles all the security issues of the S2B. In fact, its aim is to authenticate and authorize requests, relying on the token provided from the client (since it should be a REST application). If a request is not authenticated, it takes the user to a login page; otherwise it simply replies with an unauthorized state message.
 \end{itemize}
 
-
-
-
-
-
 \subsection{Deployment view}
 
 \begin{figure}[H]
@@ -116,22 +110,43 @@ The tiers in the image are the following:
     \item \textbf{Tier 4:} it is composed by the DBMS servers. They store the data and execute actions on it, according to the instruction given by the application servers.
 \end{itemize}
 \subsection{Runtime view}
+As stated previously, Module 1 (eMSP subsystem) is a mobile app while Module 2 (CPMS subsystem) is a web app. All the following diagrams represent the runtime view from the mobile app’s perspective, in order to increase readability, the web app’s perspective isn’t shown as it only differs from the other one by using the web server’s module before calling the Application Server.\\
+Every interface uses the REST API through HTTP GET or/and POST calls.
+\subsubsection{Signup Customer}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cust_signup_success}
+        \includegraphics[width=\textwidth]{img/runtime/cust_signup_error}
+    \end{center}
+\end{figure}
+The diagram above represents the process of signing up a Customer. There two possible situations:
+\begin{itemize}
+    \item Customer performs a correct registration process;
+    \item Customer performs a wrong registration process (such as the account is already registered or the email in not valid).
+\end{itemize}
+The Customer begins by inserting his registration credentials in the app. Afterwards the app sends the request to the ClientCustomerManager through the LoginInterface, accessing later the CustomerManager.\\
+The CustomerManager checks for the correctness of the received information and if correct it passes it ultimately to the DBMS. Then an email is sent to the Customer by the EmailManager. If the CustomerManager checks fail, the user is sent a specific error message related to his issue.
+\subsubsection{Login Customer}
+The Customer inputs his login credentials and then the MobileApp sends the request, through the LoginInterface to the ClientCustomerManager, which forwards them to the CustomerManager that checks for their correctness and then interrogates the DBMS and searches for the credentials. If the returned value is null the ClientManager sends a specific error message and the login fails, otherwise a 200 response status code is sent to the MobileApp.
+\subsubsection{Signup Customer}
+\subsubsection{Signup Customer}
+
 \subsection{Component interface}
 
 
-%\begin{figure}[H]
-    %\begin{center}
-       % \includegraphics[width=\textwidth]{img/ComponentInterface1.PNG}
-     %   \caption{Component Interface}\label{component_interface1}
-  %  \end{center}
-%\end{figure}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/ComponentInterface1.PNG}
+        \caption{Component Interface 1}\label{component_interface1}
+    \end{center}
+\end{figure}
 
-%\begin{figure}[H]
-   % \begin{center}
-     %   \includegraphics[width=\textwidth]{img/ComponentInterface2.PNG}
-     %   \caption{Component Interface}\label{component_interface2}
- %   \end{center}
-%\end{figure}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/ComponentInterface2.PNG}
+        \caption{Component Interface 2}\label{component_interface2}
+    \end{center}
+\end{figure}
 
 eMSP'interfaces description:
 \begin{itemize}
