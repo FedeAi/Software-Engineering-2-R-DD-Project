@@ -140,81 +140,94 @@ The Customer inputs his login credentials and then the MobileApp sends the reque
         \includegraphics[width=\textwidth]{img/runtime/nearby_stations}
     \end{center}
 \end{figure}
-To access this view it is necessary to have performed the login before (\ref{cust_login}). The MobileApp will automatically request the list of stations that are nearby the Customer, through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The InfoStationsHandler will then filter the far stations and will return to the MobileApp the list of close stations, that will be displayed to the Customer.
+To access this view it is necessary to have performed the login before (\ref{cust_login}). The MobileApp will automatically request the list of stations that are nearby the Customer, through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The InfoStationsHandler will then filter the far stations and will return to the MobileApp the list of close stations, that will be used in conjunction with the MapsAPI by the app, in order display an interactive map to the customer to the Customer.
 \subsubsection{View Information about a Station}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/station_info}
     \end{center}
 \end{figure}
-To access this view it is necessary to have performed the login before (\ref{cust_login}). When a station from the View Nearby Stations View (\ref{nearby_stations}) is selected. The MobileApp will request the information of the selected charging station through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The MobileApp will then receive the information of the selected station, that will be displayed to the Customer.
-\subsubsection{Book a Charge}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). This view is accessed when the "Book" button from the View Nearby Stations View (\ref{nearby_stations}) is selected. The MobileApp will send the booking request of the selected charging station through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The MobileApp will then receive the information of the selected station, that will be displayed to the Customer.
+\subsubsection{Book a Charge}\label{book_charge}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/book_charge}
     \end{center}
 \end{figure}
-\subsubsection{Start Charging}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). This view is accessed when the "Book" button from the View Information about a Station (\ref{nearby_stations}) is selected. The MobileApp will request the booking of the selected type of socket from the current charging station through the CustomerInterface to the ClientCustomerManager, which forwards the request to the BookingManager. The BookingManager will then request the socket by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS, where a list of the available sockets will be retrieved, and then the socket will be picked and inserted. If successful, the CPMS subsytem will return the 200 status to the BookingManager, that will store all the booking's information on the eMSP's DBMS. The MobileApp will then display a message stating that the charge has started.
+\subsubsection{Start Charging}\label{start_charge}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/start_charge}
     \end{center}
 \end{figure}
-
+To access this view it is necessary to have performed the login before (\ref{cust_login}). The Customer must access the Bookings View. The MobileApp will then request the list of performed booking of the Customer through the CustomerInterface to the ClientCustomerManager, which forwards the request to the BookingManager. Finally, the BookingManager will access the DBMS in order to retrieve the list of previous bookings, that will then be displayed to the Customer. When a specific booking is selected, the App will contact the BookingManger again similarly as before, only this time to request the specific information of a booking, that will then be displayed to the user. Now, the Customer can select the "Unlock socket" button, that will trigger the ChargingManager similarly to the BookingManager previously explained, but then will contact the CPMS subsystem (Module 2) in order to unlock the socket through the StationInfoHandler and the external StationAPI, that will perform the physical socket unlock, and the status will be recorded on both the eMSP and the CPMS DBMS. In the end, the Customer view will be updated, and now the "Start Charging" button will appear only when the physical connection between the vehicle and the socket has been established. When the button is pressed and the requirements are met, the ChargingManager will then request the start of the charging by contacting the CPMS subsystem. The StationInfoHandler, will request the start of the charge to the Station API, and then will ultimately access the CPMS' DBMS to store the state update. The CPMS subsytem will return the specific socketID to the BookingManager, that will store all the booking's information on the eMSP's DBMS. The MobileApp will then receive the summary of the booking, that will be displayed to the Customer.
 \subsubsection{Pay for the Charging Service}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/pay_charging}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). The Customer must access the Bookings View and a specific booking in a similarly to Start Charging(\ref{start_charge}). The MobileApp will then request the generation of a payment ticked through the CustomerInterface to the ClientCustomerManager, which forwards the request to the PaymentManager that will access the PaymentAPI. The Customer will be presented with a web page inside the app where he can pay with whatever method the payment processor offer. It is important to say that this web template will be provided and mantained by the external payment service. After the Customer has input his information, the MobileApp will contact the PaymentManager again, that will forward the information to the PaymentAPI for processing. If correct, the 200 OK status code is returned.
 \subsection{Change active vehicle for suggestions}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/change_vehicle.png}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). The MobileApp, after the Customer has input his new license plate, will contact the VehicleManager through the CustomerInterface and the ClientCustomerManager. The VehicleManager will then verify the ownership and the plate itself through the external VehicleAPI. If successful, the updated is stored on the DBMS and the 200 OK status code is returned to the MobileApp.
 \subsubsection{Book a charge from a suggestion}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/suggestion.png}
     \end{center}
 \end{figure}
-\subsubsection{Login CPO operator}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). When a Customer clicks on a received push notification, the MobileApp will contact the SuggestionManager that will retrieve the suggestion from the DBMS, and then the vehicle charge state will be retrieved from the CPMS. The SuggestionManager will then check in the suggestion is still valid. If it is still valid, the suggestionInfo will be sent to the MobileApp and displayed to the user. If the Customer accepts the suggestion, the BookingManager will be contacted, and it will retrieve all the suggestion info from the DBMS, and then will perform the booking of a charge in the same way as the Book a Charge view (\ref{book_charge}).
+\subsubsection{Login CPO operator}\label{cpo_login}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_login}
     \end{center}
 \end{figure}
+The CPO operator inputs his login credentials and then the WebApp sends the request, through the CPOLoginInterface to the ClientCPOManager, which forwards them to the CPOManager that checks for their correctness and then interrogates the DBMS and searches for the credentials. If the returned value is null the ClientManager sends a specific error message and the login fails, otherwise a 200 response status code is sent to the WebApp.
 \subsubsection{View CPO dashboard}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_dashboard}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cpo_login}). After the CPO operator login, the WebApp automatically request the dashboard where all the CPO's station are present. The WebApp contacts the ClientCPOManager through the CPOInterface. Then the StationInfoHandler is accessed, that in turn queries the DBMS to retrieve the list of charging stations associated with the CPO. The CPO main dashboard is then shown to the operator. If an operator wants to select the single station's dashboard, he can click the "modify" button that triggers the request from the WebApp to the StationInfoHandler, in the same way as before. The CPO operator can then view the station's current status and settings.
 \subsubsection{Modify a station current charging price}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_price}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cpo_login}). The CPO operator must access the single station dashboard. In order to edit the station's current charging price, the "Update price" button must be selected. Then the WebApp will show a popup where the operator can enter the new price.
+When a new price is entered, the WebApp contacts the ClientCPOManager through the CPOInterface, and finally the PriceManager is accessed. The PriceManager will store the station's new price in the CPMS' DBMS. The WebApp will be sent a 200 OK status code that will automatically close the popup.
 \subsubsection{Modify a station current energy provider (DSO)}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_dso}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cpo_login}). The CPO operator must access the single station dashboard. In order to edit the station's current energy provider (DSO), the "Update provider" button must be selected. Then the WebApp will contact the ClientCPOManager through the CPOInterface, and finally the EnergyManager is accessed. The EnergyManager will query the DBMS in order to retrieve the station's DSO list. The module will then query the external DSOAPI to get their current energy price. Then the DSO list will be sent to the WebApp, that will show a popup with all the available DSOs with their current prices.Finally, the operator can select either the automatic option or a manual DSO to acquire energy from. When a new option is selected, the WebApp contacts the EnergyManager again in the same way, but this time it updates the current station provider in the DBMS, and then it contacts the external DSOAPI to propagate the change.
+The WebApp is returned a 200 OK status code that automatically closes the popup.
 \subsubsection{Modify a station special offers}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_offers}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cpo_login}). The CPO operator must access the single station dashboard. In order to edit the station's current special offers, the "Update special offer" button must be selected. Every special offer is bound to a type of charging socket. After the button is selected, the WebApp will show a popup where the operator can enter the new special offer for the type of socket.
+When a new offer is entered, the WebApp contacts the ClientCPOManager through the CPOInterface, and finally the PriceManager is accessed. The PriceManager will store the station's new offer in the CPMS' DBMS. The WebApp will be sent a 200 OK status code that will automatically close the popup.
 \subsubsection{Modify a station battery policy}
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{img/runtime/cpo_battery}
     \end{center}
 \end{figure}
+To access this view it is necessary to have performed the login before (\ref{cpo_login}). The CPO operator must access the single station dashboard. Another requirement lies in the fact that the station has to have a battery installed. In order to edit the station's current battery policy, the "Update battery policy" button must be selected. After the button is selected, the WebApp will show a popup where the operator can enter the new battery policy of the station. Finally, the operator can select either the automatic option or a manual battery policy. When a new option is selected, the WebApp contacts the ClientCPOManager through the CPOInterface. The next step is to access the BatteryManger that will update the battery policy on the DBMS and then apply the policy to the station by contacting the external StationAPI. The WebApp is returned a 200 OK status code that automatically closes the popup.
 \subsection{Component interface}
 
 \begin{figure}[H]
@@ -231,7 +244,7 @@ To access this view it is necessary to have performed the login before (\ref{cus
     \end{center}
 \end{figure}
 
-eMSP'interfaces description:
+eMSP interfaces description:
 \begin{itemize}
     \item \textbf{CustomerInterface}: this is the main interface to exchange data between the mobile-application and the eMSP.
     \item \textbf{LoginInterface}: this interface is used to handle the login, sign-up, and account activation of the customer. It's used to comunicate between the mobile-app and the eMSP.
@@ -245,7 +258,7 @@ eMSP'interfaces description:
     \item \textbf{PaymentController}: eMSP's internal interface, it is used to manage the payment phase. The reqPay method is used to send a payment request. The pay method is used to communicate the payment informations and pay.
 \end{itemize}
 
-CPMS'interfaces description:
+CPMS interfaces description:
 \begin{itemize}
     \item \textbf{CPMSInterface}: this is the main interface to exchange data between the eMSP and the CPMS. It can be retrived a list of stations, or info about a single station. It can be requested to unlock a socket or request a reservation for a booking.
     \item \textbf{CPOInterface}: this is the main interface to exchange data between the CPMS and the CPO-WebServer. It expose all the functionalities to manage a station, for example to set special offers, set charging price...
@@ -312,9 +325,6 @@ When the CPMS system has the automatic DSO feature active, an algorithm to autom
 When the CPMS system has the automatic battery mode active, an algorithm to automatically managed the battery operation mode  (Discharge, Mantain, Recharge) is used. When the battery is in discharge mode, it means that the battery is discharging and the energy is flowing from the battery to the vehicles, when the battery is in mantain mode it is not used. The automatic battery mode uses the policy in figure \ref{battery_policy}. Once activated the automatic mode the battery state is mantain. Every time the battery state of charge (SoC) is less than 20 \% it goes to the recharge state.
 The transition between mantain and discharge states are based on the station socket occupation: if there are many customers (>50 \% of sockets occupied) the battery is set to discharge state, if insted the occupation becomes lower than 40 \% (debouncing factor) the battery is deactivated.
 
-\subsubsection{Send-suggestions - Algorithm}
-The eMSP sends booking suggestions to the customer's mobile-app. Suggestions are based on customer position, car's SoC, calendar. A basic algorithm will send suggestions only when the customer has at least the next 3 hours free, the battery SoC must be under the 60\%. The application will not "spam" noification, so a debouncing time of 2h is set between one suggestion and another. The suggested charging station is simply the nearest to the customer's location.
-
 \begin{center}
     \begin{figure}[H]
         \includegraphics[width=\textwidth]{./img/battery_policy.png}
@@ -322,3 +332,6 @@ The eMSP sends booking suggestions to the customer's mobile-app. Suggestions are
         \label{battery_policy}
     \end{figure}
 \end{center}
+
+\subsubsection{Send-suggestions - Algorithm}
+The eMSP sends booking suggestions to the customer's mobile-app. Suggestions are based on customer position, car's SoC, calendar. A basic algorithm will send suggestions only when the customer has at least the next 3 hours free, the battery SoC must be under the 60\%. The application will not "spam" noification, so a debouncing time of 2h is set between one suggestion and another. The suggested charging station is simply the nearest to the customer's location.
