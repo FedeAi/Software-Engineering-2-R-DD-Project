@@ -126,13 +126,96 @@ The diagram above represents the process of signing up a Customer. There two pos
 \end{itemize}
 The Customer begins by inserting his registration credentials in the app. Afterwards the app sends the request to the ClientCustomerManager through the LoginInterface, accessing later the CustomerManager.\\
 The CustomerManager checks for the correctness of the received information and if correct it passes it ultimately to the DBMS. Then an email is sent to the Customer by the EmailManager. If the CustomerManager checks fail, the user is sent a specific error message related to his issue.
-\subsubsection{Login Customer}
+\subsubsection{Login Customer}\label{cust_login}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cust_login_success}
+        \includegraphics[width=\textwidth]{img/runtime/cust_login_error}
+    \end{center}
+\end{figure}
 The Customer inputs his login credentials and then the MobileApp sends the request, through the LoginInterface to the ClientCustomerManager, which forwards them to the CustomerManager that checks for their correctness and then interrogates the DBMS and searches for the credentials. If the returned value is null the ClientManager sends a specific error message and the login fails, otherwise a 200 response status code is sent to the MobileApp.
-\subsubsection{Signup Customer}
-\subsubsection{Signup Customer}
+\subsubsection{View Nearby Stations}\label{nearby_stations}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/nearby_stations}
+    \end{center}
+\end{figure}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). The MobileApp will automatically request the list of stations that are nearby the Customer, through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The InfoStationsHandler will then filter the far stations and will return to the MobileApp the list of close stations, that will be displayed to the Customer.
+\subsubsection{View Information about a Station}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/station_info}
+    \end{center}
+\end{figure}
+To access this view it is necessary to have performed the login before (\ref{cust_login}). When a station from the View Nearby Stations View (\ref{nearby_stations}) is selected. The MobileApp will request the information of the selected charging station through the CustomerInterface to the ClientCustomerManager, which forwards them to the InfoStationsHandler. The InfoStationsHandler will then request the list of stations by contacting the CPMS subsystem (Module 2). The CPMS subsystem functions can be accessed by contacting the CPMSInterface. In this case, the ClientCPOManager will forward the request to the StationInfoHandler, which will ultimately access the CPMS' DBMS. The MobileApp will then receive the information of the selected station, that will be displayed to the Customer.
+\subsubsection{Book a Charge}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/book_charge}
+    \end{center}
+\end{figure}
+\subsubsection{Start Charging}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/start_charge}
+    \end{center}
+\end{figure}
 
+\subsubsection{Pay for the Charging Service}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/pay_charging}
+    \end{center}
+\end{figure}
+\subsection{Change active vehicle for suggestions}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/change_vehicle.png}
+    \end{center}
+\end{figure}
+\subsubsection{Book a charge from a suggestion}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/suggestion.png}
+    \end{center}
+\end{figure}
+\subsubsection{Login CPO operator}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_login}
+    \end{center}
+\end{figure}
+\subsubsection{View CPO dashboard}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_dashboard}
+    \end{center}
+\end{figure}
+\subsubsection{Modify a station current charging price}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_price}
+    \end{center}
+\end{figure}
+\subsubsection{Modify a station current energy provider (DSO)}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_dso}
+    \end{center}
+\end{figure}
+\subsubsection{Modify a station special offers}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_offers}
+    \end{center}
+\end{figure}
+\subsubsection{Modify a station battery policy}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{img/runtime/cpo_battery}
+    \end{center}
+\end{figure}
 \subsection{Component interface}
-
 
 \begin{figure}[H]
     \begin{center}
